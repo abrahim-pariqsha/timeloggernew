@@ -1,0 +1,179 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    list-style-type: none;
+    text-decoration: none;
+    font-family: 'poppins',sans-serif;
+}
+
+html * {
+    box-sizing: border-box;
+}
+
+.top-bar{
+    font-size: 12px;
+    height: 54px;
+    background-color: #262626;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} 
+
+.logo{
+    color: aliceblue;
+    padding: 6px 0px 0px 25px;
+    margin: 0px;
+}
+.logo span{
+    color: rgb(126, 201, 116);
+}
+
+.logo h2{
+    font-size: 24px;
+}
+:root{
+    --main-color:#dd2f6e;
+    --color-dark: #1d2231;
+    --text-grey: #8390a2;
+}
+.sidebar{
+    
+    position: fixed;
+    left: 22px;
+    margin-top: 70px;
+    height: 88%;
+    padding: 14px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    background: #1d2231;
+    overflow-y: auto;
+    scroll-behavior: auto;
+}
+
+.sidebar-brand h2{
+    padding: 10px;
+    font-size: 29px;
+    color: #fff;
+    margin-top: 5px;
+    font-family: 'Amethysta', serif;
+}
+
+.pre-section{
+    text-align: right;
+    padding: 0px 15px;
+}
+.top-btn{
+    padding: 5px 20px;
+    background-color: rgb(139, 185, 69);
+    color: white;
+    font-size: 14px;
+    border-radius: 6px;
+}
+.sidebar-brand span{
+    display: inline-block;
+}
+
+.sidebar-menu ul {
+    padding: 0px;
+}
+.sidebar-menu ul li{
+    font-size: 16px;
+    list-style: none;
+    margin-bottom: 1.3rem;
+}
+.sidebar-menu ul li a{
+    text-decoration: none;
+    color: #fff;  
+}
+.sidebar-menu ul li a span:hover{
+    color: rgb(218, 173, 116);
+}
+.main-content{
+    margin-left: 345px;
+}
+.fa {
+    font-size: 30px;
+    padding: 2px 5px;
+}
+.dashboard-section{
+    margin-top: 72px;
+}
+.nav{
+    background-color: #1d2231;
+    border-radius: 9px;
+    padding: 6px 0px;
+}
+.nav-link{
+    color: white;
+    padding: 5px 20px;
+}
+.nav-link:hover{
+    color: rgb(218, 173, 116);
+}
+
+.input-group{
+    margin-top: 75px;
+    font-size: 20px;
+}
+
+.date-field{
+    border: 1px solid rgb(233, 230, 230);
+    padding: 4px 21px;
+}
+.date-fields{
+    border: 1px solid rgb(233, 230, 230);
+    padding: 7px 50px;
+}
+
+.card{
+    margin-top: 20px;
+}
+.logo h2 i{
+    font-size: 30px;
+}
+.bg-lightblue {
+    background-color: #a7daff !important;
+}
+.light-danger-bg {
+    background-color: #F1C8DB !important;
+}
+.light-orange-bg {
+    background-color: #FFAA8A !important;
+}
+.sidebar .sidebar-menu .arrow {
+    color: var(--white-color);
+    opacity: 0.3;
+}
+.sidebar .sidebar-menu .sub-menu {
+    list-style: none;
+    /* position: relative; */
+    padding-left: 20px;
+    padding-top: 5px;
+}
+.collapse:not(.show) {
+    display: none;
+}
+.sidebar-menu .list .nested{
+    display: none;
+
+}
+.sidebar-menu .list .listing:hover>.nested {
+    display: block;
+}
+
+.sidebar-menu .list .nested{
+    display: none;
+}
+.sidebar-menu .list .nested .nesting:hover>.nested{
+    display: none;
+}
+
+.sidebar .menu-list .ms-link {
+    position: relative;
+    padding: 5px 0;
+} 
+
+
+
+

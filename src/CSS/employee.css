@@ -1,0 +1,51 @@
+.d-flex {
+    display: flex!important;
+    justify-content: end;
+    align-items: center;
+}
+.mb-0 {
+    margin-bottom: 0!important;
+    margin-top: 30px;
+} 
+
+.back {
+    display: inline-block;
+    padding: 5px 15px;
+    font-size: 13px;
+    /* font-weight: 400; */
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 0.25rem;
+}
+tbody a {
+    color: black;
+    text-decoration: none;
+    margin-right: 4px;
+}    
+.top-headings{
+    font-size: 15px;
+}
+.deleterow:hover{
+    background-color: rgb(238, 209, 172);
+    color: white;
+}
+.text-secondary {
+    color: #cea254!important;
+}
+.list-group {
+   margin-top: 6%;
+}
+.add-emp{
+    text-decoration: none;
+    color: white;
+    margin-top: 14%;
+}
+.add-emp:hover{
+    color:  #cea254;
+}
+.card-header:first-child {
+    margin-top: 50px;
+}

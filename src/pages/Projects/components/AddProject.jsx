@@ -4,7 +4,7 @@ import { useFetchClient } from "../../../hooks/Clients";
 
 // eslint-disable-next-line react/prop-types
 function AddProject({ fetchData }) {
-  const token = localStorage.getItem("token");
+  const token = sessionStorage.getItem("token");
   const [show, setShow] = useState(false);
   const initaldata = {
     name: "",
@@ -50,7 +50,7 @@ function AddProject({ fetchData }) {
   //--------------------------- Client Data-----------------------------
 
   const { clients, getClients } = useFetchClient();
-  console.log("clntssss",clients)
+  console.log("clntssss", clients);
 
   useEffect(() => {
     getClients();
@@ -61,7 +61,7 @@ function AddProject({ fetchData }) {
       <button
         type="button"
         onClick={() => setShow(true)}
-        className="btn btn-dark btn-set-task w-sm-100 emp-btn"
+        className="btn top-btn bg-gradient-primary btn-set-task w-sm-100 emp-btn"
         data-bs-toggle="modal"
         data-bs-target="#addemp"
       >
@@ -138,10 +138,10 @@ function AddProject({ fetchData }) {
               onChange={(e) => onInputChange(e)}
               required
             >
-                <option value="">Select Status</option>
-                <option value="published">published</option>
-                <option value="action">Action</option>
-                <option value="draft">Draft</option>
+              <option value="">Select Status</option>
+              <option value="published">published</option>
+              <option value="action">Action</option>
+              <option value="draft">Draft</option>
             </select>
 
             <button

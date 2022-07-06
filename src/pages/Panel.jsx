@@ -1,5 +1,5 @@
 import React from "react";
-import Navigation from "../components/Navigation/Navigation"
+import Navigation from "../components/Navigation/Navigation";
 import Header from "../components/Panel/Header/Header";
 // import { Link } from "react-router-dom";
 import TotalTimeTracked from "../components/Panel/Card/TotalTimeTracked";
@@ -17,20 +17,20 @@ import TopProjects from "../components/Panel/Card/TopProjects";
 import SideBar from "./SideBar";
 import Loader from "../components/loader/loader";
 
-
 function Panel() {
- 
   return (
     <>
-      <div>
         <Navigation />
-        <SideBar />
+   
         {/* <!-- Header --> */}
         <div className="container-fluid">
           <div className="row">
-            <div className="col-lg-3 col-md-3"></div>
-            <div className="col-lg-9">
-              <Header />
+          <div className="col-2" style={{padding:"0px"}}>
+         <SideBar />
+
+          </div>
+            <div className="col" style={{marginTop:"8%"}}>
+              {/* <Header /> */}
               {/* Card */}
               <div className="row">
                 <div className="col-lg-4">
@@ -65,7 +65,7 @@ function Panel() {
 
                 <div className="col-lg-4">
                   <div className="card">
-                  <MobileTime />
+                    <MobileTime />
                   </div>
                 </div>
               </div>
@@ -74,7 +74,7 @@ function Panel() {
               <div className="row">
                 <div className="col-lg-12">
                   <div className="card">
-                  <TimeLine />
+                    <TimeLine />
                   </div>
                 </div>
               </div>
@@ -83,7 +83,7 @@ function Panel() {
               {/* <!-- Screencast --> */}
               <div className="row">
                 <div className="col-12">
-                <RecentScreencaste />
+                  <RecentScreencaste />
                 </div>
               </div>
               {/* <!-- screencast end --> */}
@@ -91,11 +91,11 @@ function Panel() {
               {/* <!-- graph-box --> */}
               <div className="row g-3 mb-3 row-deck">
                 <div className="col-md-6">
-                <TopUsedWebAndApp />
+                  <TopUsedWebAndApp />
                 </div>
 
                 <div className="col-md-6">
-                <UnproductiveWebAndApp />
+                  <UnproductiveWebAndApp />
                 </div>
               </div>
 
@@ -103,17 +103,16 @@ function Panel() {
 
               <div className="row g-3 mb-3 row-deck">
                 <div className="col-md-6">
-                 <TopTasks />
+                  <TopTasks />
                 </div>
 
                 <div className="col-md-6">
-                 <TopProjects />
+                  <TopProjects />
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
     </>
   );
 }

@@ -13,7 +13,7 @@ function ScreenCasts() {
 
   const [currentPage, setCurrentPage] = useState(1);
   const ScreenCastsPerPage = 6;
-  const token = localStorage.getItem("token");
+  const token = sessionStorage.getItem("token");
 
   const fetchData = useCallback(async () => {
     setLoading(true);
@@ -47,7 +47,6 @@ function ScreenCasts() {
     <>
       <div>
         <Navigation />
-        <SideBar />
         {/* <!-- Header --> */}
         <div className="container-fluid">
           {loading ? (
@@ -58,7 +57,7 @@ function ScreenCasts() {
                 <SideBar />
               </div>
               <div className="col-lg-9">
-                <Header />
+                {/* <Header /> */}
                 {/* Card */}
                 <Card>
                   <div className="row"></div>

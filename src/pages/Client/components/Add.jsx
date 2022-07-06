@@ -35,7 +35,7 @@ function Add({ handleAdd, clientAdd, show }) {
           first_name: client.first_name,
           last_name: client.last_name,
           email: client.email,
-       
+
           company: client.company,
           status: "active",
         }),
@@ -68,7 +68,7 @@ function Add({ handleAdd, clientAdd, show }) {
       <button
         type="button"
         onClick={handleAdd}
-        className="btn btn-dark btn-set-task w-sm-100 emp-btn"
+        className="btn top-btn bg-gradient-primary btn-set-task w-sm-100 emp-btn"
         data-bs-toggle="modal"
         data-bs-target="#addemp"
       >

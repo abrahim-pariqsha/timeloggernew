@@ -10,8 +10,8 @@ function Login() {
 
   const navigate = useNavigate();
   useEffect(() => {
-    if (localStorage.getItem("user-info")) {
-    // if (sessionStorage.getItem("user-info")) {
+    // if (localStorage.getItem("user-info")) {
+    if (sessionStorage.getItem("user-info")) {
       navigate("./panel");
     }
   }, []);
@@ -32,12 +32,12 @@ function Login() {
     );
     setLoading(false)
     const result = await res.json();
-    localStorage.setItem("user", JSON.stringify(result.data.user));
-    localStorage.setItem("token", result.data.token);
-    // sessionStorage.setItem("user", JSON.stringify(result.data.user));
-    // sessionStorage.setItem("token", result.data.token);
+    // localStorage.setItem("user", JSON.stringify(result.data.user));
+    // localStorage.setItem("token", result.data.token);
+    sessionStorage.setItem("user", JSON.stringify(result.data.user));
+    sessionStorage.setItem("token", result.data.token);
     navigate("/");
-  }
+  } 
   return (
     <div className="form-container">
     {loading ? (
@@ -59,15 +59,18 @@ function Login() {
           required
           onChange={(e) => setPassword(e.target.value)}
         />
-        <input
+        <button
           type="submit"
           name="submit"
           value="login now"
-          className="form-btn"
+          className="btn top-btn bg-gradient-primary btn-set-task w-sm-100 emp-btn"
+          style={{background:"#cd1662", color:"white"}}
           onClick={HandleClick}
-        />
-        <p>
+        >Login Now</button>
+        <p id="register">
           Dont have an account? <Link to="/register">Register Now</Link>{" "}
+          <br></br>
+          <Link to="/ForgotPass">Forogt Password</Link>
         </p>
       </form>
       )}

@@ -10,48 +10,47 @@ import DeleteDialog from "../../components/Modal/DeleteDialog";
 import Loader from "../../components/loader/loader";
 import MaterialTable from "material-table";
 const Client = () => {
-  const { clients, getClients,loading } = useFetchClient();
-  
+  const { clients, getClients, loading } = useFetchClient();
+
   const [show, setShow] = useState(false);
   const deleteRef = useRef(null);
   const [editClient, setEditClient] = useState(false);
-  
-
   // const [offSet, setOffSet] = useState(0);
-
+  
   //   const handlePageClick = (e) => {
-  //     const selectedPage = e.selected;
-  //     setOffSet(selectedPage + 1)
-  // };
-
-  // --------Add---------
-  useEffect(() => {
-    getClients();
-    console.log("clientssssss",clients)
-  }, []);
-  const handleAdd = () => {
-    setShow(true);
-  };
-  const clientAdd = () => {
-    setShow(false);
-    getClients();
-  };
-
-  // -----------update--------
-  const update = () => {
-    setEditClient(true);
-  };
-
-  const handleUpdate = () => {
-    setEditClient(false);
-    getClients();
-  };
-
-  const deleteClient = async (selectedClient) => {
-    if (window.confirm("want to delete ?"));
-    {
-      const response = await fetch(
-        `http://timelogger.webstagdummy.com/timelogger/items/client/${selectedClient?.id}`,
+    //     const selectedPage = e.selected;
+    //     setOffSet(selectedPage + 1)
+    // };
+    
+    // --------Add---------
+    useEffect(() => {
+      getClients();
+      
+    }, []);
+    const handleAdd = () => {
+      setShow(true);
+    };
+    const clientAdd = () => {
+      setShow(false);
+      getClients();
+    };
+    
+    // -----------update--------
+    const update = () => {
+      setEditClient(true);
+    };
+    
+    const handleUpdate = () => {
+      setEditClient(false);
+      getClients();
+    };
+    const token = sessionStorage.getItem("token");
+    
+    const deleteClient = async (selectedClient) => {
+      if (window.confirm("want to delete ?"));
+      {
+        const response = await fetch(
+          `http://timelogger.webstagdummy.com/timelogger/items/client/${selectedClient?.id}`,
         {
           headers: {
             Accept: "application/json",
@@ -88,7 +87,7 @@ const Client = () => {
       title: "COMPANY NAME",
       field: "company",
     },
-   
+
     {
       title: "ADDRESS",
       field: "address",
@@ -104,131 +103,136 @@ const Client = () => {
   ];
   return (
     <>
-    <Navigation />
-    <SideBar />
-    <div className="container-fluid">
-      {loading ? (
-        <Loader />
-      ) : (
-        <div className="row">
-          <div className="col-md-3"></div>
+      <Navigation />
+      <div className="container-fluid">
+        {loading ? (
+          <Loader />
+        ) : (
+          <div className="row">
+            <div className="col-2" style={{padding:"0px"}}>
 
-          <div className="col-lg-9">
-            <div className="head-section border-0 mb-4">
-              <div className="row align-items-center">
-                {/* <div className="col-md-6">
+      <SideBar />
+           
+            </div>
+
+            <div className="col" style={{marginTop:"8%"}}>
+              <div className="head-section border-0 mb-4">
+                <div className="row align-items-center">
+                  {/* <div className="col-md-6">
                   <div className="card-header py-4 bg bg-transparent d-flex align-items-center px-0 justify-content-between border-bottom flex-wrap"></div>
                 </div> */}
-                <div className="col-md-11 m-5">
-                  <div className="col-auto d-flex w-sm-100 mt-2 mt-sm-0">
-                  <Add
-                      tokenProp={token}
-                      handleAdd={handleAdd}
-                      clientAdd={clientAdd}
-                      show={show}
-                    />
+                  <div className="col">
+                    <div className="col-auto d-flex flex-row-reverse w-sm-100 mt-2 mt-sm-0">
+                      <Add
+                        tokenProp={token}
+                        handleAdd={handleAdd}
+                        clientAdd={clientAdd}
+                        show={show}
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
 
-            <div className="row">
-              <div className="col-md-12">
-                <div className="side-body">
-                  <MaterialTable
-                    title="Client List"
-                    columns={columns}
-                    data={
-                     
-                      clients?.map(
-                        ({
-                          id, 
-                          user,
-                          email, 
-                          company,
-                          address,
-                          gender,
-                          dob,
-                          phone, 
-                          status,
-                        }) => ({
-                          id,
-                          userId:(user?.id),
-                          first_name:(user?.first_name),
-                          email:(user?.email),
-                          company:(user?.company),
-                          address,
-                          dob,
-                          gender,
-                          phone,  
-                          status,
-                        })
-                      )
-                    }
-                    localization={{
-                      pagination: {
-                        labelRowsPerPage: false,
-                      },
-                      header: {
-                  actions: "ACTIONS",
-                },
-                    }}
-                    actions={[
-                      (rowData) => ({
-                        icon: () => (
-                          <Link
-                            to={`/ClientDetails/${rowData?.id}`}
-                            className="fa-solid fa-eye"
-                          />
-                        ),
-                        tooltip: "view",
-                        // onClick: (rowData)
-                      }),
-                      (rowData) => ({
-                        icon: () => (
-                          <i
-                            className="fa-solid fa-trash"
-                            onClick={() => deleteClient(rowData)}
-                            title="delete"
-                          ></i>
-                        ),
-                      }),
+              <MaterialTable
+                title="Client List"
+                columns={columns}
+                style={{
+                  // marginLeft: "-3%",
+                  padding: "2% 2% 2% 2%",
+                  backgroundColor: "#f3f3f3",
+                  boxShadow: "0 0 1px 1px black",
+                }}
+                data={clients?.map(
+                  ({
+                    id,
+                    user,
+                    email,
+                    company,
+                    address,
+                    gender,
+                    dob,
+                    phone,
+                    status,
+                  }) => ({
+                    id,
+                    userId: user?.id,
+                    first_name: user?.first_name,
+                    email: user?.email,
+                    company: user?.company,
+                    address,
+                    dob,
+                    gender,
+                    phone,
+                    status,
+                  })
+                )}
+                localization={{
+                  pagination: {
+                    labelRowsPerPage: false,
+                  },
+                  header: {
+                    actions: "ACTIONS",
+                  },
+                }}
+                actions={[
+                  (rowData) => ({
+                    icon: () => (
+                      <Link
+                        to={`/ClientDetails/${rowData?.id}`}
+                        className="fa-solid fa-eye"
+                      />
+                    ),
+                    tooltip: "view",
+                    // onClick: (rowData)
+                  }),
+                  (rowData) => ({
+                    icon: () => (
+                      <i
+                        className="fa-solid fa-trash"
+                        onClick={() => deleteClient(rowData)}
+                        title="delete"
+                      ></i>
+                    ),
+                  }),
 
-                      (rowData) => ({
-                        icon: () => (
-                          <span>  
-                            <Edit
-                              data={rowData}
-                              update={update}
-                              handleUpdate={handleUpdate}
-                              editClient={editClient}
-                            />
-                          </span>
-                        ),
-                      }),
-                    ]}
-                    //  style={{
-                    //   maxWidth: "2200px",
-                    //   margin: "20px",
-                    //   marginRight: "100%",
-                    //   border: "8px",
-                    //   textAlign: "center",
-                    // }}
-                    options={{
-                      search: true,
-                      sorting: true,
-                      headerStyle: { background: "#999", color: "#fff" },
-                      actionsColumnIndex: -1,
-                    }}
-                  />
-                </div>
-              </div>
+                  (rowData) => ({
+                    icon: () => (
+                      <span>
+                        <Edit
+                          data={rowData}
+                          update={update}
+                          handleUpdate={handleUpdate}
+                          editClient={editClient}
+                        />
+                      </span>
+                    ),
+                  }),
+                ]}
+                //  style={{
+                //   maxWidth: "2200px",
+                //   margin: "20px",
+                //   marginRight: "100%",
+                //   border: "8px",
+                //   textAlign: "center",
+                // }}
+                options={{
+                  search: true,
+                  sorting: true,
+                  headerStyle: {
+                    background: "#cd0c62",
+                    color: "#fff",
+                    fontSize: "100%",
+                    fontWeight: "bold",
+                  },
+                  actionsColumnIndex: -1,
+                }}
+              />
             </div>
           </div>
-        </div>
-      )}
-    </div>
-  </>
+        )}
+      </div>
+    </>
     // <>
     //   <Navigation />
     //   <SideBar />
@@ -245,12 +249,12 @@ const Client = () => {
     //             </div>
     //             <div className="col-md-6">
     //               <div className="col-auto d-flex w-sm-100 mt-2 mt-sm-0">
-                    // <Add
-                    //   tokenProp={token}
-                    //   handleAdd={handleAdd}
-                    //   clientAdd={clientAdd}
-                    //   show={show}
-                    // />
+    // <Add
+    //   tokenProp={token}
+    //   handleAdd={handleAdd}
+    //   clientAdd={clientAdd}
+    //   show={show}
+    // />
     //               </div>
     //             </div>
     //           </div>

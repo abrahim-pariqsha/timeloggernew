@@ -1,3 +1,4 @@
+
 .App {
   text-align: center;
 }
@@ -6,13 +7,17 @@
   height: 40vmin;
   pointer-events: none;
 }
+body, html {
+  overflow-x: hidden;
+  padding-right: 0 !important;
+  background-color: #fff!important;
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
 }
-
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -36,3 +41,5 @@
     transform: rotate(360deg);
   }
 }
+
+  

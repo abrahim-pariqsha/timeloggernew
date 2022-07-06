@@ -9,24 +9,22 @@ import { useFetchEmployee } from "../../hooks/Employees";
 import Loader from "../../components/loader/loader";
 import MaterialTable from "material-table";
 function Employee() {
-
   // const { employees, getEmployees,loading } = useFetchEmployee();
   // console.log("employees",employees)
-  
-  const [data, setData] = useState([])
+
+  const [data, setData] = useState([]);
   const [show, setShow] = useState(false);
   // const [employee, setEmployee] = useState([])
-  const [users, setUsers] = useState([])
+  const [users, setUsers] = useState([]);
   const [edit, setEdit] = useState(false);
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
   //pagination's state
 
   const [currentPage, setCurrentPage] = useState(1);
   const employeesPerPage = 5;
 
-  const token = localStorage.getItem("token");
+  const token = sessionStorage.getItem("token");
 
-  
   const fetchEmployee = useCallback(async () => {
     setLoading(true);
     const res = await fetch(
@@ -42,14 +40,13 @@ function Employee() {
     );
     setLoading(false);
     const data = await res.json();
-    console.log("employe", data);
     setData(data.data);
   }, []);
 
   useEffect(() => {
     fetchEmployee();
   }, []);
-  
+
   const fetchUser = useCallback(async () => {
     setLoading(true);
     const res = await fetch(
@@ -65,7 +62,6 @@ function Employee() {
     );
     setLoading(false);
     const data1 = await res.json();
-    console.log("usrrrr", data1);
     setUsers(data1.data);
   }, []);
 
@@ -108,7 +104,7 @@ function Employee() {
   const handleHide = () => {
     setShow(false);
     fetchEmployee();
-    fetchUser()
+    fetchUser();
   };
 
   const handleUp = () => {
@@ -117,18 +113,15 @@ function Employee() {
   const handleEdit = () => {
     setEdit(false);
     fetchEmployee();
-    fetchUser()
+    fetchUser();
   };
-
-  
-  
 
   // const fetchUserData = (userdata) => {
   //   console.log("edata", userdata);
   //   const userdetail = users?.find((item, id) => item?.id === userdata);
   //   console.log("username",userdetail?.user?.first_name)
   //   return userdetail?.user
-   
+
   // };
   // console.log("usersssss",fetchUserData(82))
   //pagination
@@ -170,132 +163,135 @@ function Employee() {
 
   return (
     <>
-    <Navigation />
-    <SideBar />
-    <div className="container-fluid">
-      {loading ? (
-        <Loader />
-      ) : (
-        <div className="row">
-          <div className="col-md-3"></div>
+      <Navigation />
+      <div className="container-fluid" style={{padding: "10px 10px"}}>
+        {loading ? (
+          <Loader />
+        ) : (
+          <div className="row">
+            <div className="col-2" style={{padding:"0px"}}>
+      <SideBar />
 
-          <div className="col-lg-9">
-            <div className="head-section border-0 mb-4">
-              <div className="row align-items-center">
-                {/* <div className="col-md-6">
+            </div>
+
+            <div className="col" style={{ borderStyle: "solid black", marginTop:"8%" }}>
+              <div className="head-section border-0 mb-4">
+                <div className="row align-items-center">
+                  {/* <div className="col-md-6">
                   <div className="card-header py-4 bg bg-transparent d-flex align-items-center px-0 justify-content-between border-bottom flex-wrap"></div>
                 </div> */}
-                <div className="col-md-11 m-5">
-                  <div className="col-auto d-flex w-sm-100 mt-2 mt-sm-0">
-                  <AddEmployee
-                      handleShow={handleShow}
-                      handleHide={handleHide}
-                      show={show}
-                    />
+                  <div className="col">
+                    <div className="col-auto d-flex flex-row-reverse w-sm-100 mt-10 mt-sm-0 ">
+                      <AddEmployee
+                        handleShow={handleShow}
+                        handleHide={handleHide}
+                        show={show}
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
 
-            <div className="row">
-              <div className="col-md-12">
-                <div className="side-body">
-                  <MaterialTable
-                    title="Employee List"
-                    columns={columns}
-                    data={
-                     
-                      data?.map(
-                        ({
-                          id, 
-                          user,
-                          email, 
-                          address,
-                          gender,
-                          dob,
-                          phone, 
-                          status,
-                        }) => ({
-                          id,
-                          userId:(user?.id),
-                          first_name:(user?.first_name),
-                          // last_name:(user?.last_name),
-                          email:(user?.email),
-                          address,
-                          dob,
-                          gender,
-                          phone,  
-                          status,
-                        })
-                      )
-                    }
-                    localization={{
-                      pagination: {
-                        labelRowsPerPage: false,
-                      },
-                      header: {
-                  actions: "ACTIONS",
-                },
-                    }}
-                    actions={[
-                      (rowData) => ({
-                        icon: () => (
-                          <Link
-                            to={`/DetailsEmployee/${rowData?.id}`}
-                            className="fa-solid fa-eye"
-                          />
-                        ),
-                        tooltip: "view",
-                        // onClick: (rowData)
-                      }),
-                      (rowData) => ({
-                        icon: () => (
-                          <i
-                            className="fa-solid fa-trash"
-                            onClick={() => deleteEmployee(rowData)}
-                            title="delete"
-                          ></i>
-                        ),
-                      }),
+              <MaterialTable
+                title="Employee List"
+                style={{
+                  // marginLeft: "-3%",
+                  padding: "2% 2% 2% 2%",
+                  backgroundColor: "#f3f3f3",
+                  boxShadow: "0 0 1px 1px black",
+                }}
+                columns={columns}
+                data={data?.map(
+                  ({
+                    id,
+                    user,
+                    email,
+                    address,
+                    gender,
+                    dob,
+                    phone,
+                    status,
+                  }) => ({
+                    id,
+                    userId: user?.id,
+                    first_name: user?.first_name,
+                    // last_name:(user?.last_name),
+                    email: user?.email,
+                    address,
+                    dob,
+                    gender,
+                    phone,
+                    status,
+                  })
+                )}
+                localization={{
+                  pagination: {
+                    labelRowsPerPage: false,
+                  },
+                  header: {
+                    actions: "ACTIONS",
+                  },
+                }}
+                actions={[
+                  (rowData) => ({
+                    icon: () => (
+                      <Link id="view"
+                        to={`/DetailsEmployee/${rowData?.id}`}
+                        className="fa-solid fa-eye"
+                      />
+                    ),
+                    tooltip: "view",
+                    // onClick: (rowData)
+                  }),
+                  (rowData) => ({
+                    icon: () => (
+                      <i id="trash"
+                        className="fa-solid fa-trash"
+                        onClick={() => deleteEmployee(rowData)}
+                        title="delete"
+                      ></i>
+                    ),
+                  }),
 
-                      (rowData) => ({
-                        icon: () => (
-                          <span>
-                            <EditEmployee
-                              data={rowData}
-                              handleUp={handleUp}
-                              handleEdit={handleEdit}
-                              edit={edit}
-                              // fetchEmployee = {fetchEmployee}
-                             
-                            />
-                          </span>
-                        ),
-                      }),
-                    ]}
-                    //  style={{
-                    //   maxWidth: "20px",
-                    //   margin: "20px",
-                    //   marginRight: "100%",
-                    //   border: "8px",
-                    //   textAlign: "center",
-                    // }}
-                    options={{
-                      search: true,
-                      sorting: true,
-                      headerStyle: { background: "#999", color: "#fff" },
-                      
-                      actionsColumnIndex: -1,
-                    }}
-                  />
-                </div>
-              </div>
+                  (rowData) => ({
+                    icon: () => (
+                      <span id="edit">
+                        <EditEmployee
+                          data={rowData}
+                          handleUp={handleUp}
+                          handleEdit={handleEdit}
+                          edit={edit}
+                          // fetchEmployee = {fetchEmployee}
+                        />
+                      </span>
+                    ),
+                  }),
+                ]}
+                //  style={{
+                //   maxWidth: "20px",
+                //   margin: "20px",
+                //   marginRight: "100%",
+                //   border: "8px",
+                //   textAlign: "center",
+                // }}
+                options={{
+                  search: true,
+                  sorting: true,
+                  headerStyle: {
+                    background: "#cd0c62",
+                    color: "#fff",
+                    fontSize: "100%",
+                    fontWeight: "bold",
+                  },
+
+                  actionsColumnIndex: -1,
+                }}
+              />
             </div>
           </div>
-        </div>
-      )}
-    </div>
-  </>
+        )}
+      </div>
+    </>
     // <>
     //   <Navigation />
     //   <SideBar />

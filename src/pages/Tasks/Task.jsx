@@ -12,15 +12,15 @@ function Client() {
   const [data, setData] = useState([]);
   const [employee, setEmployee] = useState([]);
   const [edit, setEdit] = useState(false);
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
 
-  const token = localStorage.getItem("token");
+  const token = sessionStorage.getItem("token");
   const { projects, getProjects } = useFetchProjects();
   useEffect(() => {
     getProjects();
   }, []);
   const fetchData = useCallback(async () => {
-    setLoading(true)
+    setLoading(true);
     const res = await fetch(
       "https://timelogger.webstagdummy.com/timelogger/items/task?fields=*.*",
       {
@@ -32,9 +32,8 @@ function Client() {
         },
       }
     );
-    setLoading(false)
-    const data = await res.json();
-    console.log("task",data)
+    setLoading(false);
+    const data = await res.json();  
     setData(data.data);
   }, []);
 
@@ -58,7 +57,6 @@ function Client() {
     );
     // setLoading(false)
     const data1 = await res.json();
-    console.log("emp", data1);
     setEmployee(data1.data);
   }, []);
   useEffect(() => {
@@ -98,12 +96,12 @@ function Client() {
   const columns = [
     { title: "ID", field: "id" },
     { title: "NAME", field: "name" },
-   
+
     {
       title: "DESCRIPTION",
       field: "description",
     },
-   
+
     {
       title: "DUE DATE",
       field: "due_date",
@@ -123,133 +121,132 @@ function Client() {
   ];
   return (
     <>
-    <Navigation />
-    <SideBar />
-    <div className="container-fluid">
-      {loading ? (
-        <Loader />
-      ) : (
-        <div className="row">
-          <div className="col-md-3"></div>
+      <Navigation />
+      <div className="container-fluid">
+        {loading ? (
+          <Loader />
+        ) : (
+          <div className="row">
+            <div className="col-2" style={{padding:"0px"}}>
 
-          <div className="col-lg-9">
-            <div className="head-section border-0 mb-4">
-              <div className="row align-items-center">
-                {/* <div className="col-md-6">
+      <SideBar />
+            </div>
+
+            <div className="col" style={{marginTop:"8%"}}>
+              <div className="head-section border-0 mb-4">
+                <div className="row align-items-center">
+                  {/* <div className="col-md-6">
                   <div className="card-header py-4 bg bg-transparent d-flex align-items-center px-0 justify-content-between border-bottom flex-wrap"></div>
                 </div> */}
-                <div className="col-md-11 m-5">
-                  <div className="col-auto d-flex w-sm-100 mt-2 mt-sm-0">
-                  <AddTask tokenProp={token} fetchData={fetchData} />
+                  <div className="col">
+                    <div className="col-auto d-flex flex-row-reverse w-sm-100 mt-2 mt-sm-0">
+                      <AddTask tokenProp={token} fetchData={fetchData} />
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
 
-            <div className="row">
-              <div className="col-md-12">
-                <div className="side-body">
-                  <MaterialTable
-                    title="Task List"
-                    columns={columns}
-                    data={
-                     
-                      data?.map(
-                        ({
-                          id, 
-                          description,
-                          due_date,
-                          name,
-                          assigned_employee,
-                          project,
-                          
-                        
-                         
-                          status,
-                        }) => ({
-                          id,
+              <MaterialTable
+                title="Task List"
+                columns={columns}
+                style={{
+                  // marginLeft: "-3%",
+                  padding: "2% 2% 2% 2%",
+                  backgroundColor: "#f3f3f3",
+                  boxShadow: "0 0 1px 1px black",
+                }}
+                data={data?.map(
+                  ({
+                    id,
+                    description,
+                    due_date,
+                    name,
+                    assigned_employee,
+                    project,
+                    status,
+                  }) => ({
+                    id,
 
-                          // first_name:(user?.first_name),
-                          // email:(user?.email),
-                          // company:(user?.company),
-                          assigned_employee: fetchEmployeeName(assigned_employee?.id),
-                          description,
-                          due_date:moment(due_date).format("MM-DD-yyyy"), 
-                          project:(project?.name),
-                          
-                          name,
-                          
-                          
-                          status,
-                          
-                        })
-                      )
-                    }
-                    localization={{
-                      pagination: {
-                        labelRowsPerPage: false,
-                      },
-                      header: {
-                  actions: "ACTIONS",
-                },
-                    }}
-                    actions={[
-                      (rowData) => ({
-                        icon: () => (
-                          <Link
-                            to={`/TaskDetails/${rowData?.id}`}
-                            className="fa-solid fa-eye"
-                          />
-                        ),
-                        tooltip: "view",
-                        // onClick: (rowData)
-                      }),
-                      (rowData) => ({
-                        icon: () => (
-                          <i
-                            className="fa-solid fa-trash"
-                            onClick={() => deleteTask(rowData.id)}
-                            title="delete"
-                          ></i>
-                        ),
-                      }),
+                    // first_name:(user?.first_name),
+                    // email:(user?.email),
+                    // company:(user?.company),
+                    assigned_employee: fetchEmployeeName(assigned_employee?.id),
+                    description,
+                    due_date: moment(due_date).format("YYYY-MM-DD"),
+                    project: project?.name,
 
-                      (rowData) => ({
-                        icon: () => (
-                          <span>  
-                            <EditTask
-                                data={rowData}
-                                handleUp={handleUp}
-                                handleEdit={handleEdit}
-                                edit={edit}
-                                fetchData={fetchData}
-                              />
-                          </span>
-                        ),
-                      }),
-                    ]}
-                    //  style={{
-                    //   maxWidth: "2200px",
-                    //   margin: "20px",
-                    //   marginRight: "100%",
-                    //   border: "8px",
-                    //   textAlign: "center",
-                    // }}
-                    options={{
-                      search: true,
-                      sorting: true,
-                      headerStyle: { background: "#999", color: "#fff" },
-                      actionsColumnIndex: -1,
-                    }}
-                  />
-                </div>
-              </div>
+                    name,
+
+                    status,
+                  })
+                )}
+                localization={{
+                  pagination: {
+                    labelRowsPerPage: false,
+                  },
+                  header: {
+                    actions: "ACTIONS",
+                  },
+                }}
+                actions={[
+                  (rowData) => ({
+                    icon: () => (
+                      <Link id="view"
+                        to={`/TaskDetails/${rowData?.id}`}
+                        className="fa-solid fa-eye"
+                      />
+                    ),
+                    tooltip: "view",
+                    // onClick: (rowData)
+                  }),
+                  (rowData) => ({
+                    icon: () => (
+                      <i id="trash"
+                        className="fa-solid fa-trash"
+                        onClick={() => deleteTask(rowData.id)}
+                        title="delete"
+                      ></i>
+                    ),
+                  }),
+
+                  (rowData) => ({
+                    icon: () => (
+                      <span id="edit" >
+                        <EditTask 
+                          data={rowData}
+                          handleUp={handleUp}
+                          handleEdit={handleEdit}
+                          edit={edit}
+                          fetchData={fetchData}
+                        />
+                      </span>
+                    ),
+                  }),
+                ]}
+                //  style={{
+                //   maxWidth: "2200px",
+                //   margin: "20px",
+                //   marginRight: "100%",
+                //   border: "8px",
+                //   textAlign: "center",
+                // }}
+                options={{
+                  search: true,
+                  sorting: true,
+                  headerStyle: {
+                    background: "#cd0c62",
+                    color: "#fff",
+                    fontSize: "100%",
+                    fontWeight: "bold",
+                  },
+                  actionsColumnIndex: -1,
+                }}
+              />
             </div>
           </div>
-        </div>
-      )}
-    </div>
-  </>
+        )}
+      </div>
+    </>
     // <>
     //   <Navigation />
     //   <SideBar />
@@ -266,7 +263,7 @@ function Client() {
     //             </div>
     //             <div className="col-md-6">
     //               <div className="col-auto d-flex w-sm-100 mt-2 mt-sm-0">
-                    // <AddTask tokenProp={token} fetchData={fetchData} />
+    // <AddTask tokenProp={token} fetchData={fetchData} />
     //               </div>
     //             </div>
     //           </div>
@@ -433,13 +430,13 @@ function Client() {
     //                           </button>
     //                         </td>
     //                         <td>
-                              // <EditTask
-                              //   data={d}
-                              //   handleUp={handleUp}
-                              //   handleEdit={handleEdit}
-                              //   edit={edit}
-                              //   fetchData={fetchData}
-                              // />
+    // <EditTask
+    //   data={d}
+    //   handleUp={handleUp}
+    //   handleEdit={handleEdit}
+    //   edit={edit}
+    //   fetchData={fetchData}
+    // />
     //                         </td>
     //                       </tr>
     //                     </tbody>

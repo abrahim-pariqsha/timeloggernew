@@ -71,12 +71,12 @@
 
 .form-container form{
 
-    padding: 20px;
-    border-radius: 5px;
+    padding: 3.5%;
+    border-radius: 3%;
     box-shadow: 0 5px 10px rgba(0,0,0,.1);
     background: #fff;
     text-align: center;
-    margin: 0 30%;
+    /* margin: 0 30%; */
     
 }
 
@@ -103,8 +103,8 @@
 }
 
 .form-container form .form-btn{
-    background-color: #f8c0cc;
-    color: crimson;
+    background-color: crimson;
+    color: #fff;
     text-transform: capitalize;
     font-size: 20px;
     cursor: pointer;
@@ -117,7 +117,7 @@
 
 .form-container form p{
     margin-top: 10px;
-    font-size: 20px;
+    font-size: 80%;
     color: #333;
 }
 

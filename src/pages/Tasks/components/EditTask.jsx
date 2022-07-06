@@ -1,10 +1,11 @@
+import moment from "moment";
 import React, { useState, useEffect } from "react";
 import { Modal } from "react-bootstrap";
 import { useFetchProjects } from "../../../hooks/Project";
-
+import { useFetchEmployee } from "../../../hooks/Employees";
 // eslint-disable-next-line react/prop-types
-function EditTask({ data: taskProp, fetchData },handleEdit) {
-  const token = localStorage.getItem("token");
+function EditTask({ data: taskProp, fetchData }, handleEdit) {
+  const token = sessionStorage.getItem("token");
   const [show, setShow] = useState(false);
   const [task, setTask] = useState({ ...taskProp });
   // eslint-disable-next-line react/prop-types
@@ -29,7 +30,8 @@ function EditTask({ data: taskProp, fetchData },handleEdit) {
           name: task.name,
           description: task.description,
           project: task.project,
-          due_date: task.due_date?.moment,
+          assigned_employee: task.employee,
+          due_date: moment(task.due_date).format("YYYY-MM-DD hh:mm:ss"),
         }),
         method: "PATCH",
       }
@@ -40,24 +42,27 @@ function EditTask({ data: taskProp, fetchData },handleEdit) {
     onClientChange();
   };
   // console.log(fetch);
+  const { employees, getEmployees } = useFetchEmployee();
 
+  useEffect(() => {
+    getEmployees();
+    // console.log("akjsdhkajsd", getEmployees)
+  }, []);
+  console.log(employees, "empppppp");
   const { projects, getProjects } = useFetchProjects();
 
   useEffect(() => {
     getProjects();
   }, []);
   if (!task) return <div></div>;
-  const { name, description, project, due_date, status } = task;
+  const { name, description, employee, project, due_date, status } = task;
 
+  console.log("due", moment(due_date).format("YYYY-MM-DD hh:mm:ss"));
 
   return (
     <div>
-      <a
-        
-        onClick={() => setShow(true)}
-   
-      >
-       <i className="fa-solid fa-user-pen"></i>
+      <a onClick={() => setShow(true)}>
+        <i className="fa-solid fa-user-pen"></i>
       </a>
       <Modal show={show} onHide={() => setShow(false)} centered>
         <Modal.Header closeButton>
@@ -98,18 +103,34 @@ function EditTask({ data: taskProp, fetchData },handleEdit) {
               name="project"
               value={project}
               onChange={(e) => onClientChange(e)}
-              
               required
             >
               {/* <option>adadd project</option> */}
               {projects?.map((d, i) => (
-                <option key={i} value={d.id} >
-                 {/* <option value="" disabled>{project}</option> */}
+                <option key={i} value={d.id}>
+                  {/* <option value="" disabled>{project}</option> */}
                   {d?.name}
                 </option>
               ))}
             </select>
-           
+            <>
+              <label>Employee</label>
+              <select
+                className="form-control mb-4"
+                name="employee"
+                value={employee}
+                onChange={(e) => onClientChange(e)}
+                required
+              >
+                <option>Select Employee</option>
+                {employees?.map((d, i) => (
+                  <option key={i} value={`${d?.id}`}>
+                    {d?.user?.first_name}
+                  </option>
+                ))}
+              </select>
+            </>
+
             {/* <input
               className="form-control mb-4"
               type="text"
@@ -121,7 +142,6 @@ function EditTask({ data: taskProp, fetchData },handleEdit) {
             <label>Status</label>
             <select
               className="form-control mb-4"
-         
               placeholder="Status"
               name="status"
               value={status}

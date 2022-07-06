@@ -8,7 +8,7 @@ function Edit({
   handleUpdate,
   editClient,
 }) {
-  const token = localStorage.getItem("token");
+  const token = sessionStorage.getItem("token");
   const [show, setShow] = useState(false);
   const [client, setClient] = useState(data);
   // eslint-disable-next-line react/prop-types

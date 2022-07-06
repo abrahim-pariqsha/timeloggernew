@@ -13,7 +13,7 @@ function AddTask({ fetchData }) {
     status: "",
     due_date: "",
   };
-  const token = localStorage.getItem("token");
+  const token = sessionStorage.getItem("token");
   const [show, setShow] = useState(false);
   const [add, setAdd] = useState(initaldata);
   const { name, description, due_date, project, employee, status } = add;
@@ -37,7 +37,7 @@ function AddTask({ fetchData }) {
           name: add.name,
           description: add.description,
           project: add.project,
-          due_date:moment(add.due_date).format(),
+          due_date: moment(add.due_date).format(),
           assigned_employee: add.employee,
           status: add.status,
         }),
@@ -68,7 +68,7 @@ function AddTask({ fetchData }) {
       <button
         type="button"
         onClick={() => setShow(true)}
-        className="btn btn-dark btn-set-task w-sm-100 emp-btn"
+        className="btn top-btn bg-gradient-primary btn-set-task w-sm-100 emp-btn"
         data-bs-toggle="modal"
         data-bs-target="#addemp"
       >
@@ -135,7 +135,7 @@ function AddTask({ fetchData }) {
                 <option>Select Employee</option>
                 {employees?.map((d, i) => (
                   <option key={i} value={d.id}>
-                    {d.owner.first_name}
+                    {d?.user.first_name}
                   </option>
                 ))}
               </select>

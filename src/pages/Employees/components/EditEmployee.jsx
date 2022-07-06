@@ -1,25 +1,24 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Modal } from "react-bootstrap";
 import { useFetchEmployee } from "../../../hooks/Employees";
 
 // eslint-disable-next-line react/prop-types
-function EditEmployee({
-  data,
-  handleUp,
-  handleEdit,
-  edit,
-}) {
+function EditEmployee({ data, handleUp, handleEdit, edit }) {
   // const { employees, getEmployees } = useFetchEmployee();
-  const token = localStorage.getItem("token");
+  const token = sessionStorage.getItem("token");
   const [show, setShow] = useState(false);
-  const [employee, setEmployee] = useState(data);
+  const [employee, setEmployee] = useState();
 
-  console.log("data",data);
+  console.log("data", data);
 
   //client
   const onEmployeeChange = (e) => {
     setEmployee({ ...employee, [e.target.name]: e.target.value });
   };
+
+  useEffect(() => {
+    setEmployee(data);
+  }, [data]);
 
   //user
   // const onUserChange = (e) => {
@@ -39,33 +38,33 @@ function EditEmployee({
         },
         body: JSON.stringify({
           first_name: employee.first_name,
-         
+
           email: employee.email,
           // status: user.status,
         }),
         method: "PATCH",
       }
-      );
-      console.log("idd",employee.userId),
-    //client
-    await fetch(
-      `http://timelogger.webstagdummy.com/timelogger/items/employee/${employee.id}?fields=*.*`,
-      {
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          Authorization: "Bearer " + token,
-        },
-        body: JSON.stringify({
-          status: employee.status,
-          gender: employee.gender,
-          dob: employee.dob,
-          phone: employee.phone,
-          address: employee.address,
-        }),
-        method: "PATCH",
-      }
     );
+    console.log("idd", employee.userId),
+      //client
+      await fetch(
+        `http://timelogger.webstagdummy.com/timelogger/items/employee/${employee.id}?fields=*.*`,
+        {
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + token,
+          },
+          body: JSON.stringify({
+            status: employee.status,
+            gender: employee.gender,
+            dob: employee.dob,
+            phone: employee.phone,
+            address: employee.address,
+          }),
+          method: "PATCH",
+        }
+      );
     setShow(false);
     handleEdit();
 
@@ -96,7 +95,7 @@ function EditEmployee({
               onChange={(e) => onEmployeeChange(e)}
               required
             />
-            
+
             <label>Email</label>
             <input
               className="form-control mb-4"

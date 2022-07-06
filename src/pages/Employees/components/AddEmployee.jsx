@@ -6,16 +6,18 @@ const initialData = {
   first_name: "",
   last_name: "",
   email: "",
+  password: "",
   gender: "",
   dob: "",
   status: "",
   address: "",
   phone: "",
+  role: "",
 };
 
 // eslint-disable-next-line react/prop-types
 function AddEmployee({ handleHide, handleShow, show }) {
-  const token = localStorage.getItem("token");
+  const token = sessionStorage.getItem("token");
   // const [show, setShow] = useState(false);
   const [employee, setEmployee] = useState(initialData);
 
@@ -40,8 +42,10 @@ function AddEmployee({ handleHide, handleShow, show }) {
           first_name: employee.first_name,
           last_name: employee.last_name,
           email: employee.email,
+          password: employee.password,
+          status: "active",
+          role: "4",
         }),
-        status: "active",
         method: "POST",
       }
     );
@@ -57,7 +61,7 @@ function AddEmployee({ handleHide, handleShow, show }) {
           Authorization: "Bearer " + token,
         },
         body: JSON.stringify({
-          status: "published",
+          status: employee.status,
           user: data.data.id,
           address: employee.address,
           phone: employee.phone,
@@ -77,7 +81,7 @@ function AddEmployee({ handleHide, handleShow, show }) {
       <button
         type="button"
         onClick={handleShow}
-        className="btn btn-dark btn-set-task w-sm-100 emp-btn"
+        className="btn top-btn bg-gradient-primary btn-set-task w-sm-100 emp-btn"
         data-bs-toggle="modal"
         data-bs-target="#addemp"
       >
@@ -117,6 +121,24 @@ function AddEmployee({ handleHide, handleShow, show }) {
               onChange={(e) => onInputChange(e)}
               required
             />
+            <label>Password</label>
+            <input
+              className="form-control mb-4"
+              type="password"
+              name="password"
+              value={employee.password}
+              onChange={(e) => onInputChange(e)}
+              required
+            />
+            {/* <label>Role</label>
+            <input
+              className="form-control mb-4"
+              type="text"
+              name="role"
+              value={employee.role}
+              onChange={(e) => onInputChange(e)}
+              required
+            /> */}
             <label>Gender</label>
             <select
               className="form-control mb-4"
@@ -167,8 +189,8 @@ function AddEmployee({ handleHide, handleShow, show }) {
             >
               <option value="">Select Status</option>
               <option value="published">published</option>
-              <option value="action">Action</option>
               <option value="draft">Draft</option>
+              <option value="deleted">Deleted</option>
             </select>
             <button
               style={{ textAlign: "right" }}

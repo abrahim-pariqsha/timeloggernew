@@ -4,15 +4,15 @@ import { Modal } from "react-bootstrap";
 import { useFetchClient } from "../../../hooks/Clients";
 
 // eslint-disable-next-line react/prop-types
-function EditProject({ data: ProjectProp, fetchData },handleEdit) {
-  const token = localStorage.getItem("token");
+function EditProject({ data: ProjectProp, fetchData }, handleEdit) {
+  const token = sessionStorage.getItem("token");
 
   const [show, setShow] = useState(false);
   const [project, setProject] = useState({ ...ProjectProp });
   const onClientChange = (e) => {
     setProject({ ...project, [e.target.name]: e.target.value });
   };
-  
+
   const { clients, getClients } = useFetchClient();
 
   useEffect(() => {
@@ -37,11 +37,11 @@ function EditProject({ data: ProjectProp, fetchData },handleEdit) {
           start_date: project.start_date,
           end_date: project.end_date,
           client: project.client,
-          
         }),
         method: "PATCH",
       }
     );
+    console.log(project.client, "dsfsdf");
     fetchData();
     setShow(false);
     handleEdit();
@@ -51,12 +51,8 @@ function EditProject({ data: ProjectProp, fetchData },handleEdit) {
   const { name, description, start_date, end_date, client, status } = project;
   return (
     <div>
-      <a
-        
-        onClick={() => setShow(true)}
-        
-      >
-       <i className="fa-solid fa-user-pen"></i>
+      <a onClick={() => setShow(true)}>
+        <i className="fa-solid fa-user-pen"></i>
       </a>
       <Modal show={show} onHide={() => setShow(false)} centered>
         <Modal.Header closeButton>
@@ -108,15 +104,14 @@ function EditProject({ data: ProjectProp, fetchData },handleEdit) {
               className="form-control mb-4"
               onChange={(e) => onClientChange(e)}
             >
-                <option>Select Client</option>
-                {clients?.map((d, i) => (
-                  <option key={i} value={`${d?.id}`}>
-                    {d?.user?.first_name}
-                  </option>
-                ))}
+              <option>Select Client</option>
+              {clients?.map((d, i) => (
+                <option key={i} value={`${d?.id}`}>
+                  {d?.user?.first_name}
+                </option>
+              ))}
             </select>
 
-           
             <label>Project Status</label>
             <select
               id="status"
@@ -125,9 +120,8 @@ function EditProject({ data: ProjectProp, fetchData },handleEdit) {
               name="status"
               value={status}
               onChange={(e) => onClientChange(e)}
-             
             >
-               <option value="">Select Status</option>
+              <option value="">Select Status</option>
               <option value="published">published</option>
               <option value="action">Action</option>
               <option value="draft">Draft</option>

@@ -59,9 +59,9 @@ function Rou() {
         <Route
           path="/register"
           element={
-            <PrivateRoute>
+            <PublicRoute>
               <Register />
-            </PrivateRoute>
+            </PublicRoute>
           }
         />
           <Route
@@ -101,9 +101,9 @@ function Rou() {
         <Route
           path="/employee"
           element={
-            <PublicRoute>
+            <PrivateRoute>
               <Employee />
-            </PublicRoute>
+            </PrivateRoute>
           }
         />
         <Route
@@ -174,9 +174,9 @@ function Rou() {
          <Route
           path="ForgotPass"
           element={
-            <PrivateRoute>
+            <PublicRoute>
              {<ForgotPass></ForgotPass>}
-            </PrivateRoute>
+            </PublicRoute>
           }
         />
         <Route

@@ -2,6 +2,11 @@
 .App {
   text-align: center;
 }
+/* #errDisplay{
+  color: rgb(173, 59, 59);
+  font-size: 11px;
+  min-height: 18px;
+} */
 
 .App-logo {
   height: 40vmin;

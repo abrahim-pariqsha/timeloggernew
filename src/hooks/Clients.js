@@ -18,6 +18,7 @@ export const useFetchClient = () => {
    .then((res) => res.json())
       .then((data) => {
         setClients(data.data);
+
       })
       .then(() => {
         setLoading(false);

@@ -4,8 +4,8 @@ import { Link, useLocation } from "react-router-dom";
 import Navigation from "../components/Navigation/Navigation";
 function SideBar() {
   const Location = useLocation();
-  const { pathname } = location;
-  const splitLocation = pathname.split("/");
+  // const { pathname } = Location;
+  // const splitLocation = pathname.split("/");
   return (
     <>
     <nav className="sidebar sidebar-offcanvas" id="sidebar" style={{zIndex:"99"}}>

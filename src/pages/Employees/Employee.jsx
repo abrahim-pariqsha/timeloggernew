@@ -18,10 +18,7 @@ function Employee() {
   const [users, setUsers] = useState([]);
   const [edit, setEdit] = useState(false);
   const [loading, setLoading] = useState(false);
-  //pagination's state
-
-  const [currentPage, setCurrentPage] = useState(1);
-  const employeesPerPage = 5;
+  
 
   const token = sessionStorage.getItem("token");
 
@@ -41,6 +38,7 @@ function Employee() {
     setLoading(false);
     const data = await res.json();
     setData(data.data);
+    console.log("all data",data)
   }, []);
 
   useEffect(() => {
@@ -63,6 +61,7 @@ function Employee() {
     setLoading(false);
     const data1 = await res.json();
     setUsers(data1.data);
+    console.log(data1,"data1111");
   }, []);
 
   useEffect(() => {
@@ -213,7 +212,7 @@ function Employee() {
                     status,
                   }) => ({
                     id,
-                    userId: user?.id,
+                    userId:id,
                     first_name: user?.first_name,
                     // last_name:(user?.last_name),
                     email: user?.email,

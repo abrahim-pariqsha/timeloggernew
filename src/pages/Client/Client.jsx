@@ -12,6 +12,7 @@ import MaterialTable from "material-table";
 const Client = () => {
   const { clients, getClients, loading } = useFetchClient();
 
+  
   const [show, setShow] = useState(false);
   const deleteRef = useRef(null);
   const [editClient, setEditClient] = useState(false);
@@ -25,8 +26,8 @@ const Client = () => {
     // --------Add---------
     useEffect(() => {
       getClients();
-      
     }, []);
+    console.log("getcltt",clients)
     const handleAdd = () => {
       setShow(true);
     };
@@ -178,7 +179,7 @@ const Client = () => {
                 actions={[
                   (rowData) => ({
                     icon: () => (
-                      <Link
+                      <Link id="view"
                         to={`/ClientDetails/${rowData?.id}`}
                         className="fa-solid fa-eye"
                       />
@@ -188,7 +189,7 @@ const Client = () => {
                   }),
                   (rowData) => ({
                     icon: () => (
-                      <i
+                      <i id="trash"
                         className="fa-solid fa-trash"
                         onClick={() => deleteClient(rowData)}
                         title="delete"
@@ -198,7 +199,7 @@ const Client = () => {
 
                   (rowData) => ({
                     icon: () => (
-                      <span>
+                      <span id="edit">
                         <Edit
                           data={rowData}
                           update={update}

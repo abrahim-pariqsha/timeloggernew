@@ -38,3 +38,7 @@ position: fixed;
     margin-top: 40%;
   }
 }
+#errDisplay{
+  color: rgb(210, 55, 55);
+  font-size: 13px;
+}

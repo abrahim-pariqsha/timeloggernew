@@ -49,6 +49,9 @@ const Projects = () => {
   const handleUp = () => {
     setEdit(true);
   };
+  const handleShow = () => {
+    setShow(true);
+  };
   const handleEdit = () => {
     setEdit(false);
     fetchData();
@@ -365,7 +368,8 @@ const Projects = () => {
                   </div> */}
                   <div className="col">
                     <div className="col-auto d-flex flex-row-reverse w-sm-100 mt-2 mt-sm-0">
-                      <AddProject fetchData={fetchData} />
+                      <AddProject fetchData={fetchData}
+                      handleShow={handleShow} />
                     </div>
                   </div>
                 </div>

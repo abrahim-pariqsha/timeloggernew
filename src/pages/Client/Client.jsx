@@ -9,6 +9,9 @@ import { token } from "../../Constants/Contansts";
 import DeleteDialog from "../../components/Modal/DeleteDialog";
 import Loader from "../../components/loader/loader";
 import MaterialTable from "material-table";
+import swal from 'sweetalert';
+
+
 const Client = () => {
   const { clients, getClients, loading } = useFetchClient();
 
@@ -36,6 +39,7 @@ const Client = () => {
       getClients();
     };
     
+    
     // -----------update--------
     const update = () => {
       setEditClient(true);
@@ -47,33 +51,45 @@ const Client = () => {
     };
     const token = sessionStorage.getItem("token");
     
+
+
     const deleteClient = async (selectedClient) => {
-      if (window.confirm("want to delete ?"));
-      {
-        const response = await fetch(
-          `http://timelogger.webstagdummy.com/timelogger/items/client/${selectedClient?.id}`,
-        {
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-            Authorization: "Bearer " + token,
-          },
-          method: "DELETE",
+      swal({
+        title: "Are you sure?",
+        text: "Once deleted, you will not be able to recover this data!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      })
+      .then(async (willDelete) => {
+        if (willDelete) {
+          const response = await fetch(
+            `http://timelogger.webstagdummy.com/timelogger/items/client/${selectedClient?.id}`,
+          {
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+              Authorization: "Bearer " + token,
+            },
+            method: "DELETE",
+          }
+        );
+        getClients();
+        await fetch(
+          `http://timelogger.webstagdummy.com/timelogger/users/${selectedClient?.user?.id}`,
+          {
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+              Authorization: "Bearer " + token,
+            },
+            method: "DELETE",
+          }
+        );
+        } else {
+          swal("Your imaginary file is safe!");
         }
-      );
-      getClients();
-      await fetch(
-        `http://timelogger.webstagdummy.com/timelogger/users/${selectedClient?.user?.id}`,
-        {
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-            Authorization: "Bearer " + token,
-          },
-          method: "DELETE",
-        }
-      );
-    }
+      });
     // deleteRef?.current?.hide()
   };
 
@@ -140,9 +156,9 @@ const Client = () => {
                 columns={columns}
                 style={{
                   // marginLeft: "-3%",
-                  padding: "2% 2% 2% 2%",
+                  // padding: "2% 2% 2% 2%",
                   backgroundColor: "#f3f3f3",
-                  boxShadow: "0 0 1px 1px black",
+                  boxShadow: "0 0 2px 2px black",
                 }}
                 data={clients?.map(
                   ({

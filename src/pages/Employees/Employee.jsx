@@ -8,6 +8,7 @@ import Pagination from "../../components/Pagination";
 import { useFetchEmployee } from "../../hooks/Employees";
 import Loader from "../../components/loader/loader";
 import MaterialTable from "material-table";
+import swal from 'sweetalert';
 function Employee() {
   // const { employees, getEmployees,loading } = useFetchEmployee();
   // console.log("employees",employees)
@@ -69,32 +70,42 @@ function Employee() {
   }, []);
 
   const deleteEmployee = async (item) => {
-    if (window.confirm("Want to delete?"));
-    {
-      const response = await fetch(
-        `http://timelogger.webstagdummy.com/timelogger/items/employee/${item?.id}`,
-        {
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-            Authorization: "Bearer " + token,
-          },
-          method: "DELETE",
-        }
-      );
-      fetchEmployee();
-      await fetch(
-        `http://timelogger.webstagdummy.com/timelogger/users/${item?.user?.id}`,
-        {
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-            Authorization: "Bearer " + token,
-          },
-          method: "DELETE",
-        }
-      );
-    }
+    swal({
+      title: "Are you sure?",
+      text: "Once deleted, you will not be able to recover this data!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+    .then(async(willDelete) => {
+      if (willDelete) {
+        const response = await fetch(
+          `http://timelogger.webstagdummy.com/timelogger/items/employee/${item?.id}`,
+          {
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+              Authorization: "Bearer " + token,
+            },
+            method: "DELETE",
+          }
+        );
+        fetchEmployee();
+        await fetch(
+          `http://timelogger.webstagdummy.com/timelogger/users/${item?.user?.id}`,
+          {
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+              Authorization: "Bearer " + token,
+            },
+            method: "DELETE",
+          }
+        );
+      } else {
+        swal("Your imaginary file is safe!");
+      }
+    });
   };
   const handleShow = () => {
     setShow(true);
@@ -195,9 +206,9 @@ function Employee() {
                 title="Employee List"
                 style={{
                   // marginLeft: "-3%",
-                  padding: "2% 2% 2% 2%",
+                  // padding: "2% 2% 2% 2%",
                   backgroundColor: "#f3f3f3",
-                  boxShadow: "0 0 1px 1px black",
+                  boxShadow: "0 0 2px 2px black",
                 }}
                 columns={columns}
                 data={data?.map(

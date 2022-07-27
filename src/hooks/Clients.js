@@ -12,13 +12,15 @@ export const useFetchClient = () => {
       {
         headers: {
           Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+          Accept: "application/json",
         },
+        method: "GET",
       }
     )
-   .then((res) => res.json())
+      .then((res) => res.json())
       .then((data) => {
         setClients(data.data);
-
       })
       .then(() => {
         setLoading(false);

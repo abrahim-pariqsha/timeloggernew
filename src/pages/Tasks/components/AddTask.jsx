@@ -42,7 +42,7 @@ function AddTask({ fetchData }) {
       name: name,
       description: description,
       status: status,
-      due_date: moment(due_date).toISOString(),
+      due_date:moment(due_date).format(),
       project: project,
     };
     setLoading(true);

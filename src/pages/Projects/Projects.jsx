@@ -4,7 +4,7 @@ import SideBar from "../SideBar";
 import AddProject from "./components/AddProject";
 import EditProject from "./components/EditProject";
 import Loader from "../../components/loader/loader";
-import moment from "moment";
+import swal from 'sweetalert';
 import { useFetchClient } from "../../hooks/Clients";
 import Navigation from "../../components/Navigation/Navigation";
 import { Link } from "react-router-dom";
@@ -58,19 +58,32 @@ const Projects = () => {
   };
 
   const deleteProject = async (id) => {
-    if (window.confirm("Want to delete?"))
-      await fetch(
-        `http://timelogger.webstagdummy.com/timelogger/items/project/${id}?fields=*.*`,
-        {
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-            Authorization: "Bearer " + token,
-          },
-          method: "DELETE",
-        }
-      );
-    fetchData();
+    swal({
+      title: "Are you sure?",
+      text: "Once deleted, you will not be able to recover this data!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+    .then(async(willDelete) => {
+      if (willDelete) {
+        await fetch(
+          `http://timelogger.webstagdummy.com/timelogger/items/project/${id}?fields=*.*`,
+          {
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+              Authorization: "Bearer " + token,
+            },
+            method: "DELETE",
+          }
+        );
+      fetchData();
+      } else {
+        swal("Your imaginary file is safe!");
+      }
+    });
+      
   };
 
   const fetchUser = useCallback(async () => {
@@ -384,9 +397,9 @@ const Projects = () => {
                       columns={columns}
                       style={{
                         marginLeft: "-2%",
-                        padding: "4% 4% 4% 4%",
+                        // padding: "4% 4% 4% 4%",
                         backgroundColor: "#f3f3f3",
-                        boxShadow: "0 0 1px 1px black",
+                        boxShadow: "0 0 2px 2px black",
                       }}
                       data={
                         data &&

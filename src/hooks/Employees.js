@@ -12,7 +12,10 @@ export const useFetchEmployee = () => {
       {
         headers: {
           Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+          Accept: "application/json",
         },
+        method: "GET",
       }
     )
       .then((res) => res.json())

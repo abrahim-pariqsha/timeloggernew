@@ -8,6 +8,7 @@ import { useFetchProjects } from "../../hooks/Project";
 import MaterialTable from "material-table";
 import Loader from "../../components/loader/loader";
 import moment from "moment";
+import swal from 'sweetalert';
 function Client() {
   const [data, setData] = useState([]);
   const [employee, setEmployee] = useState([]);
@@ -72,20 +73,32 @@ function Client() {
   //-------------------Delete--------------------------
 
   const deleteTask = async (id) => {
-    var result = window.confirm("Want to delete?");
-    await fetch(
-      `http://timelogger.webstagdummy.com/timelogger/items/task/${id}?fields=*.*`,
-      {
-        method: "DELETE",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          Authorization: "Bearer " + token,
-        },
+    swal({
+      title: "Are you sure?",
+      text: "Once deleted, you will not be able to recover this data!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+    .then(async(willDelete) => {
+      if (willDelete) {
+        await fetch(
+          `http://timelogger.webstagdummy.com/timelogger/items/task/${id}?fields=*.*`,
+          {
+            method: "DELETE",
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+              Authorization: "Bearer " + token,
+            },
+          }
+        );
+        fetchData();
+        // result();
+      } else {
+        swal("Your imaginary file is safe!");
       }
-    );
-    fetchData();
-    result();
+    });
   };
 
   const fetchEmployeeName = (employees) => {
@@ -151,9 +164,9 @@ function Client() {
                 columns={columns}
                 style={{
                   // marginLeft: "-3%",
-                  padding: "2% 2% 2% 2%",
+                  // padding: "2% 2% 2% 2%",
                   backgroundColor: "#f3f3f3",
-                  boxShadow: "0 0 1px 1px black",
+                  boxShadow: "0 0 2px 2px black",
                 }}
                 data={data?.map(
                   ({

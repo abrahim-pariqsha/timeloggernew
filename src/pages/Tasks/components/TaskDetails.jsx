@@ -72,9 +72,10 @@ function TaskDetails() {
                       columns={columns}
                       style={{
                         marginLeft: "-3%",
-                        padding: "2% 2% 2% 2%",
+                        // padding: "2% 2% 2% 2%",
                         backgroundColor: "#f3f3f3",
-                        boxShadow: "0 0 1px 1px black",
+                        marginTop:"8%",
+                        boxShadow: "0 0 2px 2px black",
                       }}
                       data={[
                         {

@@ -87,7 +87,7 @@ const Client = () => {
           }
         );
         } else {
-          swal("Your imaginary file is safe!");
+          swal("Your data is safe!");
         }
       });
     // deleteRef?.current?.hide()

@@ -24,9 +24,13 @@ function Navigation() {
             data-toggle="minimize"
           >
             <span className="mdi mdi-menu"></span>
-          </button>
-           {" "} {" "}
-          <h1 style={{padding:"10px"}}>Time Tracker</h1>
+          </button>{" "}
+          <img
+            className="sand"
+            src="../static_1/assets/sandClock.webp"
+            alt=""
+          />
+          <h1 style={{ padding: "8px",fontStyle: "italic",fontFamily: "cursive",marginLeft:"-2%" }}>Time Logger</h1>
           {/* <ul className="navbar-nav w-100">
             <li className="nav-item w-100">
               <form className="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
@@ -274,7 +278,9 @@ function Navigation() {
                     </div>
                   </div>
                   <div className="preview-item-content">
-                    <p className="preview-subject mb-1" onClick={HandleLogout}>Log out</p>
+                    <p className="preview-subject mb-1" onClick={HandleLogout}>
+                      Log out
+                    </p>
                   </div>
                 </a>
                 <div className="dropdown-divider"></div>
@@ -286,7 +292,6 @@ function Navigation() {
             className="navbar-toggler navbar-toggler-right d-lg-none align-self-center"
             type="button"
             data-toggle="offcanvas"
-            
           >
             <span className="mdi mdi-format-line-spacing"></span>
           </button>

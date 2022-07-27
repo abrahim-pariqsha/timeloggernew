@@ -96,7 +96,7 @@ function Client() {
         fetchData();
         // result();
       } else {
-        swal("Your imaginary file is safe!");
+        swal("Your data is safe!");
       }
     });
   };

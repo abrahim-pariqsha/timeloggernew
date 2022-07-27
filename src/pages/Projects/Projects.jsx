@@ -80,7 +80,7 @@ const Projects = () => {
         );
       fetchData();
       } else {
-        swal("Your imaginary file is safe!");
+        swal("Your data is safe!");
       }
     });
       

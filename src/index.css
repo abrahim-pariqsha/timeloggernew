@@ -54,3 +54,8 @@ position: fixed;
 .swal-overlay {
   background-color: rgba(48, 48, 48, 0.8);
 }
+.sand{
+  color: #cd1662;
+ margin: 7px;
+ width: 6%;
+}

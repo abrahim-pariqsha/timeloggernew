@@ -105,7 +105,7 @@ function EditTask({ data: taskProp, fetchData }, handleEdit) {
               onChange={(e) => onClientChange(e)}
               required
             >
-              {/* <option>adadd project</option> */}
+              <option>add project</option>
               {projects?.map((d, i) => (
                 <option key={i} value={d.id}>
                   {/* <option value="" disabled>{project}</option> */}

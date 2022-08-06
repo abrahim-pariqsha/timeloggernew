@@ -59,3 +59,13 @@ position: fixed;
  margin: 7px;
  width: 6%;
 }
+#card1{
+  background-image: linear-gradient(rgba(221, 219, 220, 0.8), rgba(106, 156, 222, 0.4))
+}
+#card2{
+  background-image: linear-gradient(rgba(221, 219, 220, 0.8),rgba(106, 156, 222, 0.2))
+}
+.donut{
+  height: 472px;
+    width: 417px;
+}

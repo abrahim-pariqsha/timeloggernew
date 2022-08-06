@@ -20,99 +20,80 @@ import Loader from "../components/loader/loader";
 function Panel() {
   return (
     <>
-        <Navigation />
-   
-        {/* <!-- Header --> */}
-        <div className="container-fluid">
-          <div className="row">
-          <div className="col-2" style={{padding:"0px"}}>
-         <SideBar />
+      <Navigation />
 
+      {/* <!-- Header --> */}
+      <div className="container-fluid">
+        <div className="row">
+          <div className="col-2" style={{ padding: "0px" }}>
+            <SideBar />
           </div>
-            <div className="col" style={{marginTop:"8%"}}>
-              {/* <Header /> */}
-              {/* Card */}
-              <div className="row">
-                <div className="col-lg-4">
-                  <div className="card">
-                    <TotalTimeTracked />
-                  </div>
-                </div>
-                <div className="col-lg-4">
-                  <div className="card">
-                    <IdelMInutes />
-                  </div>
-                </div>
-
-                <div className="col-lg-4">
-                  <div className="card">
-                    <UnproductiveTime />
-                  </div>
+          <div className="col" style={{ marginTop: "8%" }}>
+            {/* <Header /> */}
+            {/* Card */}
+            <div className="row">
+              <div className="col-lg-4">
+                <div className="card">
+                  <TotalTimeTracked />
+                  {/* <ProductiveTime /> */}
                 </div>
               </div>
-              <div className="row">
-                <div className="col-lg-4">
-                  <div className="card">
-                    <ProductiveTime />
-                  </div>
-                </div>
-
-                <div className="col-lg-4">
-                  <div className="card">
-                    <ManualTime />
-                  </div>
-                </div>
-
-                <div className="col-lg-4">
-                  <div className="card">
-                    <MobileTime />
-                  </div>
+              <div className="col-lg-4">
+                <div className="card">
+                  <IdelMInutes />
                 </div>
               </div>
 
-              {/* <!-- Timeline section --> */}
-              <div className="row">
-                <div className="col-lg-12">
-                  <div className="card">
-                    <TimeLine />
-                  </div>
+              <div className="col-lg-4">
+                <div className="card">
+                  <ProductiveTime />
                 </div>
               </div>
-              {/* <!-- Timeline-section end --> */}
+            </div>
 
-              {/* <!-- Screencast --> */}
-              <div className="row">
-                <div className="col-12">
-                  <RecentScreencaste />
+            {/* <!-- Timeline section --> */}
+            {/* <div className="row">
+              <div className="col-lg-12">
+                <div className="card">
+                  <TimeLine />
                 </div>
               </div>
-              {/* <!-- screencast end --> */}
+            </div> */}
+            {/* <!-- Timeline-section end --> */}
 
-              {/* <!-- graph-box --> */}
-              <div className="row g-3 mb-3 row-deck">
-                <div className="col-md-6">
-                  <TopUsedWebAndApp />
-                </div>
+            {/* <!-- Screencast --> */}
+            {/* <div className="row">
+              <div className="col-12">
+                <RecentScreencaste />
+              </div>
+            </div> */}
+            {/* <!-- screencast end --> */}
 
-                <div className="col-md-6">
-                  <UnproductiveWebAndApp />
-                </div>
+            {/* <!-- graph-box --> */}
+            {/* <div className="row g-3 mb-3 row-deck">
+              <div className="col-md-6">
+                <TopUsedWebAndApp />
               </div>
 
-              {/* graph-box end  */}
+              <div className="col-md-6">
+                <UnproductiveWebAndApp />
+              </div>
+            </div> */}
 
-              <div className="row g-3 mb-3 row-deck">
-                <div className="col-md-6">
-                  <TopTasks />
-                </div>
+            {/* graph-box end  */}
 
-                <div className="col-md-6">
-                  <TopProjects />
-                </div>
+            <div className="row g-3 mb-3 row-deck">
+              <div className="col-md-6" style={{marginTop:"30px"}}>
+                <TopTasks />
+              </div>
+
+              <div className="col-md-6" style={{marginTop:"30px"}}>
+                <TopProjects />
               </div>
             </div>
           </div>
         </div>
+      </div>
     </>
   );
 }

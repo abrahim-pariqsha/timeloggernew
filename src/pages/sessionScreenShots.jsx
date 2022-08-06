@@ -35,7 +35,7 @@ function SessionsScreenshots() {
     setLoading(false);
     const data = await res.json();
     console.log("sessionfff", data);
-    
+    setData(data.data)
   }, []);
 
   useEffect(() => {
@@ -75,7 +75,9 @@ function SessionsScreenshots() {
                             {d?.status}
                           </Card.Subtitle> */}
                           <div className="">
+                          <a href={d?.images?.data?.full_url} target="_blank" rel="noopener noreferrer" >
                             <img src={d?.images?.data?.full_url} alt="" />
+                            </a>
                           </div>
                           <Card.Text>keystrocks: {d?.keystrocks}</Card.Text>
                           <Card.Text>Idle Time: {d?.idle_time}</Card.Text>

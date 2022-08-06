@@ -37,13 +37,14 @@ function AddTask({ fetchData }) {
   });
 
   const onSubmit = async (values) => {
-    const { name, description, due_date, status, project } = values;
+    const { name, description, due_date, status, project,employee } = values;
     const task = {
       name: name,
       description: description,
       status: status,
       due_date:moment(due_date).format(),
       project: project,
+      assigned_employee:employee,
     };
     setLoading(true);
     const Client = createClient(sessionStorage.getItem("token"));
@@ -169,7 +170,7 @@ function AddTask({ fetchData }) {
               onBlur={formik.handleBlur}
               required
             >
-              {/* <option>adadd project</option> */}
+              <option>add project</option>
               {projects?.map((d, i) => (
                 <option key={i} value={d.id}>
                   {d.name}

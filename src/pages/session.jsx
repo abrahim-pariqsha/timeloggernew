@@ -31,7 +31,7 @@ function Sessions() {
     );
     setLoading(false);
     const data = await res.json();
-    console.log("session", data);
+    // console.log("session", data);
     setData(data.data);
   }, []);
 
@@ -78,7 +78,7 @@ function Sessions() {
                 <div className="col-12">
                   <div className="side-body">
                     <MaterialTable
-                      title="Task List"
+                      title="Session List"
                       columns={columns}
                       style={{
                         marginLeft: "-3%",
@@ -129,7 +129,7 @@ function Sessions() {
                         search: true,
                         sorting: true,
                         headerStyle: {
-                          background: "#cd0c62",
+                          background: "rgba(130, 130, 130, 0.8)",
                           color: "#fff",
                           fontSize: "100%",
                           fontWeight: "bold",

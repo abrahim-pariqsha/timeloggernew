@@ -9,7 +9,7 @@ function EditEmployee({ data, handleUp, handleEdit, edit }) {
   const [show, setShow] = useState(false);
   const [employee, setEmployee] = useState();
 
-  console.log("data", data);
+  // console.log("data", data);
 
   //client
   const onEmployeeChange = (e) => {
@@ -20,10 +20,7 @@ function EditEmployee({ data, handleUp, handleEdit, edit }) {
     setEmployee(data);
   }, [data]);
 
-  //user
-  // const onUserChange = (e) => {
-  //   setUser({ ...user, [e.target.name]: e.target.value });
-  // };
+
 
   //user
   const addEmployeeUser = async (e) => {
@@ -45,7 +42,7 @@ function EditEmployee({ data, handleUp, handleEdit, edit }) {
         method: "PATCH",
       }
     );
-    console.log("idd", employee.userId),
+    // console.log("idd", employee.userId),
       //client
       await fetch(
         `http://timelogger.webstagdummy.com/timelogger/items/employee/${employee.id}?fields=*.*`,

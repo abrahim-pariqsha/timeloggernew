@@ -38,7 +38,7 @@ function DetailsProject() {
     setLoading(false);
     const data = await res.json();
     setUser(data.data);
-    console.log();
+    // console.log();
   };
   const columns = [
     // { title: "Client id", field: "id" },
@@ -89,28 +89,7 @@ function DetailsProject() {
                           status: user.status,
                         },
                       ]}
-                      // data={
-                      // user?.map(
-                      //     ({
-
-                      //       id,
-                      //       name,
-                      //       description,
-                      //       start_date,
-                      //       end_date,
-                      //       status,
-                      //     }) => ({
-
-                      //       id,
-                      //       name,
-                      //       description,
-                      //       start_date,
-                      //       end_date,
-
-                      //       status,
-                      //     })
-                      //   )
-                      // }
+                     
                       localization={{
                         pagination: {
                           labelRowsPerPage: false,
@@ -120,7 +99,7 @@ function DetailsProject() {
                         search: true,
                         sorting: true,
                         headerStyle: {
-                          background: "#cd0c62",
+                          background: "rgba(130, 130, 130, 0.8)",
                           color: "#fff",
                           fontSize: "100%",
                           fontWeight: "bold",

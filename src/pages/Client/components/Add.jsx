@@ -5,23 +5,7 @@ import { Formik, useFormik } from "formik";
 import * as yup from "yup";
 import createClient from "../../../Client/Client";
 function Add({ handleAdd, clientAdd, show }) {
-  // const initialData = {
-  //   first_name: "",
-  //   last_name: "",
-  //   email: "",
-  //   gender: "",
-  //   dob: "",
-  //   status: "",
-  //   address: "",
-  //   phone: "",
-  // };
-  // const [show, setShow] = useState(false);
-  // const [client, setClient] = useState({ initialData });
-  // const { first_name, last_name, email, company, address, phone, status } =
-  //   client;
-  // const onInputChange = (e) => {
-  //   setClient({ ...client, [e.target.name]: e.target.value });
-  // };
+
   const [loading, setLoading] = useState(false)
 const PASS=/^[a-zA-Z0-9!@#$%^&*]{6,16}$/;
 const EMAIL= /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
@@ -38,7 +22,7 @@ const EMAIL= /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0
   
   
   const onSubmit = async (values) => {
-    console.log("col", values)
+    // console.log("col", values)
     const { email,first_name,last_name,company,status} = values;
     const user = {
       email: email,
@@ -47,7 +31,7 @@ const EMAIL= /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0
       company: company,
       status: "active",
     };
-    console.log(user,"adddata")
+    // console.log(user,"adddata")
     setLoading(true)  
     const Client = createClient(sessionStorage.getItem("token"));
     const res = await Client
@@ -58,7 +42,7 @@ const EMAIL= /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0
         }
       });
     if (res) {
-      console.log(res)
+      // console.log(res)
     }
     const {id,address,phone } = values;
     const employee = {
@@ -75,7 +59,7 @@ const EMAIL= /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0
         }
       });
     if (response) {
-      console.log(response)
+      // console.log(response)
     }
     clientAdd();
     setLoading(false);
@@ -96,51 +80,6 @@ const EMAIL= /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0
     validationSchema: validation,
     onSubmit,
   });
-
-
-
-
-  // const addClient = async (e) => {
-  //   e.preventDefault();
-  //   const res = await fetch(
-  //     "http://timelogger.webstagdummy.com/timelogger/users",
-  //     {
-  //       headers: {
-  //         Accept: "application/json",
-  //         "Content-Type": "application/json",
-  //         Authorization: "Bearer " + token,
-  //       },
-  //       body: JSON.stringify({
-  //         first_name: client.first_name,
-  //         last_name: client.last_name,
-  //         email: client.email,
-  //         company: client.company,
-  //         status: "active",
-  //       }),
-  //       method: "POST",
-  //     }
-  //   );
-  //   const data = await res.json();
-  //   await fetch(
-  //     "http://timelogger.webstagdummy.com/timelogger/items/client?fields=*.*",
-  //     {
-  //       headers: {
-  //         Accept: "application/json",
-  //         "Content-Type": "application/json",
-  //         Authorization: "Bearer " + token,
-  //       },
-  //       body: JSON.stringify({
-  //         status: "published",
-  //         phone: client.phone,
-  //         user: data.data.id,
-  //         address: client.address,
-  //       }),
-  //       method: "POST",
-  //     }
-  //   );
-  //   clientAdd();
-  //   setClient(initialData);
-  // };
   return (
     <div>
       <button

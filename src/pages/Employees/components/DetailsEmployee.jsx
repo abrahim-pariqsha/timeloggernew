@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
-import { Table } from "react-bootstrap";
+import { useParams } from "react-router-dom";
+
 import Loader from "../../../components/loader/loader";
 import MaterialTable from "material-table";
 import Navigation from "../../../components/Navigation/Navigation";
 import SideBar from "../../SideBar";
-import { red } from "@mui/material/colors";
-import { style } from "@mui/system";
+
 function ClientDetails() {
   const [user, setUser] = useState({
     first_name: " ",
@@ -20,8 +19,7 @@ function ClientDetails() {
   const [loading, setLoading] = useState(false);
   const token = sessionStorage.getItem("token");
   const { id } = useParams();
-  const [currentPage, setCurrentPage] = useState(1);
-  const employeesPerPage = 5;
+
   useEffect(() => {
     loadUser();
   }, []);
@@ -39,7 +37,7 @@ function ClientDetails() {
     );
     setLoading(false);
     const data = await res.json();
-    console.log("dataaaa", data);
+    // console.log("dataaaa", data);
     setUser(data.data);
   };
 
@@ -106,7 +104,7 @@ function ClientDetails() {
                         search: true,
                         sorting: true,
                         headerStyle: {
-                          background: "#cd0c62",
+                          background: "rgba(130, 130, 130, 0.8)",
                           color: "#fff",
                           fontSize: "100%",
                           fontWeight: "bold",

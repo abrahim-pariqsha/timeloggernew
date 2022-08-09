@@ -23,7 +23,6 @@ function Pagination({pages , setCurrentPage}) {
     <div className="clearfix">
       <div className="hint-text">
         {" "}
-        {/* Showing <b>{}</b> out of <b>{pages}</b> entries */}
       </div>
       <ul className="pagination">
         <li
@@ -32,7 +31,6 @@ function Pagination({pages , setCurrentPage}) {
           } `}
         >
           <a
-            // href="#!"
             className="page-link"
             onClick={() => setCurrentButton((prev) => (prev === 1 ? prev : - 1))}
             
@@ -76,12 +74,3 @@ function Pagination({pages , setCurrentPage}) {
   );
 }
 export default Pagination;
-
-/* 
-<li className="page-item disabled" ><a href="#!" className="page-link">Previous</a></li>
-<li className="page-item"><a href="#!" className="page-link">1</a></li>
-<li className="page-item"><a href="#!" className="page-link">2</a></li>
-<li className="page-item "><a href="#!" className="page-link">3</a></li>
-<li className="page-item"><a href="#!" className="page-link">4</a></li>
-<li className="page-item"><a href="#!" className="page-link">5</a></li>
-<li className="page-item"><a href="#!" className="page-link">Next</a></li> */

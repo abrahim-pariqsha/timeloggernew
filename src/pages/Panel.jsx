@@ -23,7 +23,7 @@ function Panel() {
       <Navigation />
 
       {/* <!-- Header --> */}
-      <div className="container-fluid">
+      <div className="container-fluid" id="frontpage">
         <div className="row">
           <div className="col-2" style={{ padding: "0px" }}>
             <SideBar />
@@ -32,45 +32,61 @@ function Panel() {
             {/* <Header /> */}
             {/* Card */}
             <div className="row">
-              <div className="col-lg-4">
-                <div className="card">
-                  <TotalTimeTracked />
-                  {/* <ProductiveTime /> */}
+              {/* <div className="row g-3 mb-3 row-deck"> */}
+              <div className="col-9">
+                <TopTasks />
+                
                 </div>
-              </div>
-              <div className="col-lg-4">
-                <div className="card">
+                <div className="col-3">
+                  <div className="card">
+                    <TotalTimeTracked />
+                    {/* <ProductiveTime /> */}
+                  </div>
+                  <br />
+                  <div className="card">
                   <IdelMInutes />
                 </div>
-              </div>
-
-              <div className="col-lg-4">
+                <br />
                 <div className="card">
                   <ProductiveTime />
                 </div>
+                
+                </div>
+
+                <div className="row">
+                <div className="col-md-9" style={{ marginTop: "2%", width:"62vw" }}>
+                  <TopProjects />
+                </div>
+              <div className="col-3">
+             
+              </div>
+              </div>
+
+              <div className="col-3">
+                
               </div>
             </div>
-
-            {/* <!-- Timeline section --> */}
-            {/* <div className="row">
+          </div>
+          {/* <!-- Timeline section --> */}
+          {/* <div className="row">
               <div className="col-lg-12">
                 <div className="card">
                   <TimeLine />
                 </div>
               </div>
             </div> */}
-            {/* <!-- Timeline-section end --> */}
+          {/* <!-- Timeline-section end --> */}
 
-            {/* <!-- Screencast --> */}
-            {/* <div className="row">
+          {/* <!-- Screencast --> */}
+          {/* <div className="row">
               <div className="col-12">
                 <RecentScreencaste />
               </div>
             </div> */}
-            {/* <!-- screencast end --> */}
+          {/* <!-- screencast end --> */}
 
-            {/* <!-- graph-box --> */}
-            {/* <div className="row g-3 mb-3 row-deck">
+          {/* <!-- graph-box --> */}
+          {/* <div className="row g-3 mb-3 row-deck">
               <div className="col-md-6">
                 <TopUsedWebAndApp />
               </div>
@@ -80,20 +96,10 @@ function Panel() {
               </div>
             </div> */}
 
-            {/* graph-box end  */}
-
-            <div className="row g-3 mb-3 row-deck">
-              <div className="col-md-6" style={{marginTop:"30px"}}>
-                <TopTasks />
-              </div>
-
-              <div className="col-md-6" style={{marginTop:"30px"}}>
-                <TopProjects />
-              </div>
-            </div>
-          </div>
+          {/* graph-box end  */}
         </div>
       </div>
+      {/* </div> */}
     </>
   );
 }

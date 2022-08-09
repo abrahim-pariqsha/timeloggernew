@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import { Table } from "react-bootstrap";
+
 import Loader from "../../../components/loader/loader";
 import MaterialTable from "material-table";
 import SideBar from "../../SideBar";
@@ -101,7 +101,7 @@ function ClientDetails() {
                         search: true,
                         sorting: true,
                         headerStyle: {
-                          background: "#cd0c62",
+                          background: "rgba(130, 130, 130, 0.8)",
                           color: "#fff",
                           fontSize: "100%",
                           fontWeight: "bold",
@@ -117,42 +117,7 @@ function ClientDetails() {
         )}
       </div>
     </>
-    // <>
-    // <div className="">
-    //   <Link className="btn btn-primary" to="/client">
-    //     Back
-    //   </Link>
-    //   <h1 className="display-4 ">User Id: {id}</h1>
-    //  {loading ? (
-    //     <Loader />
-    //   ) : (
-    //   <Table striped bordered hover variant="dark">
-    //     <thead>
-    //       <tr>
-    //         <th>First Name</th>
-    //         <th>Last Name</th>
-    //         <th>Email</th>
-    //         <th>Company Name</th>
-    //         <th>Address</th>
-    //         <th>Phone</th>
-    //         <th>Status</th>
-    //       </tr>
-    //     </thead>
-    //     <tbody>
-    //       <tr>
-    //         <td>{user.user?.first_name}</td>
-    //         <td>{user.user?.last_name}</td>
-    //         <td>{user.user?.email}</td>
-    //         <td>{user.user?.company}</td>
-    //         <td>{user.address}</td>
-    //         <td>{user.phone}</td>
-    //         <td>{user.status}</td>
-    //       </tr>
-    //     </tbody>
-    //   </Table>
-    //   )}
-    // </div>
-    // </>
+    
   );
 }
 

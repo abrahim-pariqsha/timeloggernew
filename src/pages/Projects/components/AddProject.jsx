@@ -4,25 +4,11 @@ import { useFetchClient } from "../../../hooks/Clients";
 import { Formik, useFormik } from "formik";
 import createClient from "../../../Client/Client";
 import * as yup from "yup";
-// import Loader from "../../../components/loader/loader";
-// eslint-disable-next-line react/prop-types
+
 function AddProject({ fetchData }) {
   const [loading, setLoading] = useState(false);
   const [show, setShow] = useState(false);
-  // const initaldata = {
-  //   name: "",
-  //   description: "",
-  //   start_date: "",
-  //   end_date: "",
-  //   status: "",
-  //   client: "",
-  // };
-  // const [project, setProject] = useState(initaldata);
-  // const { name, description, start_date, end_date, client, status } = project;
 
-  // const onInputChange = (e) => {
-  //   setProject({ ...project, [e.target.name]: e.target.value });
-  // };
 
   const validation = yup.object({
     name: yup.string().required(),
@@ -49,15 +35,13 @@ function AddProject({ fetchData }) {
       // console.log(res.config.data,"adddata")
       .post("items/project", project);
     if (res) {
-      console.log(res);
+      // console.log(res);
     }
     fetchData();
     setShow(false);
     setLoading(false);
   }
 
-    // const addProject = async (e) => {
-    //   e.preventDefault();
 
     const formik = useFormik({
       initialValues: {
@@ -73,33 +57,9 @@ function AddProject({ fetchData }) {
       onSubmit,
     });
 
-    //   const data = await fetch(
-    //     "http://timelogger.webstagdummy.com/timelogger/items/project?fields=*.*",
-    //     {
-    //       headers: {
-    //         Accept: "application/json",
-    //         "Content-Type": "application/json",
-    //         Authorization: "Bearer " + token,
-    //       },
-    //       body: JSON.stringify({
-    //         status: project.status,
-    //         name: project.name,
-    //         start_date: project.start_date,
-    //         end_date: project.end_date,
-    //         description: project.description,
-    //         client: project.client,
-    //       }),
-    //       method: "POST",
-    //     }
-    //   );
-    //   fetchData();
-    //   setProject(initaldata);
-    // };
-
-    //--------------------------- Client Data-----------------------------
 
     const { clients, getClients } = useFetchClient();
-    console.log("clntssss", clients);
+    // console.log("clntssss", clients);
 
     useEffect(() => {
       getClients();

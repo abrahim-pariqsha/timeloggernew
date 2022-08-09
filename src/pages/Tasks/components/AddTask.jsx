@@ -5,28 +5,14 @@ import { useFetchProjects } from "../../../hooks/Project";
 import { Formik, useFormik } from "formik";
 import createClient from "../../../Client/Client";
 import * as yup from "yup";
-// eslint-disable-next-line react/prop-types
+
 import moment from "moment";
-// eslint-disable-next-line react/prop-types
+
 function AddTask({ fetchData }) {
-  // const initaldata = {
-  //   name: "",
-  //   description: "",
-  //   project: "",
-  //   status: "",
-  //   due_date: "",
-  // };
-  // const token = sessionStorage.getItem("token");
+
   const [show, setShow] = useState(false);
   const [loading, setLoading] = useState(false);
-  // const [add, setAdd] = useState(initaldata);
-  // const { name, description, due_date, project, employee, status } = add;
-  // const onInputChange = (e) => {
-  //   setAdd({ ...add, [e.target.name]: e.target.value });
-  // };
 
-  // const AddTask = async (e) => {
-  //   e.preventDefault();
 
   const validation = yup.object({
     name: yup.string().required(),
@@ -52,7 +38,7 @@ function AddTask({ fetchData }) {
       // console.log(res.config.data,"adddata")
       .post("items/task", task);
     if (res) {
-      console.log(res);
+      // console.log(res);
     }
     fetchData();
     setShow(false);
@@ -71,33 +57,7 @@ function AddTask({ fetchData }) {
     validationSchema: validation,
     onSubmit,
   });
-  //   const data = await fetch(
-  //     "https://timelogger.webstagdummy.com/timelogger/items/task?fields=*.*",
-  //     {
-  //       method: "POST",
-  //       headers: {
-  //         Accept: "application/json",
-  //         "Content-Type": "application/json",
-  //         Authorization: "Bearer " + token,
-  //       },
-  //       body: JSON.stringify({
-  //         name: add.name,
-  //         description: add.description,
-  //         project: add.project,
-  //         due_date: moment(add.due_date).format(),
-  //         assigned_employee: add.employee,
-  //         status: add.status,
-  //       }),
-  //     }
-  //   );
-  //   fetchData();
-  //   setShow(false);
-  //   setAdd(initaldata);
-  //   console.log("datataask", JSON.data);
-
-  //   // const res = data.json();
-  // };
-  //----------------Add Task-----------------------------
+  
   const { employees, getEmployees } = useFetchEmployee();
 
   useEffect(() => {

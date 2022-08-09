@@ -165,202 +165,6 @@ const Projects = () => {
     },
   ];
   return (
-    //   <>
-    //   <Navigation />
-    //   <SideBar />
-    //   <div className="container-fluid">
-    //     <div className="row">
-    //       <div className="col-md-3"></div>
-
-    //       <div className="col-lg-9">
-    //         <div className="head-section border-0 mb-4">
-    //           <div className="row align-items-center">
-    //             <div className="col-md-6">
-    //               <div className="card-header py-4 no-bg bg-transparent d-flex align-items-center px-0 justify-content-between border-bottom flex-wrap">
-    //                 <h3 className="h4 mb-0">Project List</h3>
-    //               </div>
-    //             </div>
-    //             <div className="col-md-6">
-    //               <div className="col-auto d-flex w-sm-100 mt-2 mt-sm-0">
-    //                 <AddProject fetchData={fetchData} />
-    //               </div>
-    //             </div>
-    //           </div>
-    //         </div>
-
-    //         <div className="row">
-    //           <div className="col-md-12">
-    //             <div className="side-body">
-    //               <table
-    //                 id="myProjectTable"
-    //                 className="table table-hover align-middle mb-0 nowwrap dataTable no-footer dtr-inline"
-    //                 style={{ width: "1005", alignItem: "center" }}
-    //                 role="grid"
-    //                 aria-describedby="myProjectTable_info"
-    //               >
-    //                 <thead>
-    //                   <tr role="row">
-    //                     <th
-    //                       className="sorting_desc top-headings"
-    //                       tabIndex="0"
-    //                       aria-controls="myProjectTable"
-    //                       rowSpan="1"
-    //                       colSpan="1"
-    //                       style={{ width: "221.2px" }}
-    //                       aria-label="Employee Name: activate to sort column ascending"
-    //                     >
-    //                       Project Id
-    //                     </th>
-    //                     <th
-    //                       className="sorting_desc top-headings"
-    //                       tabIndex="0"
-    //                       aria-controls="myProjectTable"
-    //                       rowSpan="1"
-    //                       colSpan="1"
-    //                       style={{ width: "221.2px" }}
-    //                       aria-label="Employee Name: activate to sort column ascending"
-    //                     >
-    //                       Project Name
-    //                     </th>
-    //                     <th
-    //                       className="sorting_desc top-headings"
-    //                       tabIndex="0"
-    //                       aria-controls="myProjectTable"
-    //                       rowSpan="1"
-    //                       colSpan="1"
-    //                       style={{ width: "221.2px" }}
-    //                       aria-label="Employee Name: activate to sort column ascending"
-    //                     >
-    //                       Description
-    //                     </th>
-    //                     <th
-    //                       className="sorting_desc top-headings"
-    //                       tabIndex="0"
-    //                       aria-controls="myProjectTable"
-    //                       rowSpan="1"
-    //                       colSpan="1"
-    //                       style={{ width: "221.2px" }}
-    //                       aria-label="Employee Name: activate to sort column ascending"
-    //                     >
-    //                       Start Date
-    //                     </th>
-    //                     <th
-    //                       className="sorting_desc top-headings"
-    //                       tabIndex="0"
-    //                       aria-controls="myProjectTable"
-    //                       rowSpan="1"
-    //                       colSpan="1"
-    //                       style={{ width: "221.2px" }}
-    //                       aria-label="Employee Name: activate to sort column ascending"
-    //                     >
-    //                       End Date
-    //                     </th>
-    //                     <th
-    //                       className="sorting_desc top-headings"
-    //                       tabIndex="0"
-    //                       aria-controls="myProjectTable"
-    //                       rowSpan="1"
-    //                       colSpan="1"
-    //                       style={{ width: "221.2px" }}
-    //                       aria-label="Employee Name: activate to sort column ascending"
-    //                     >
-    //                       Client
-    //                     </th>
-
-    //                     <th
-    //                       className="sorting_desc top-headings"
-    //                       tabIndex="0"
-    //                       aria-controls="myProjectTable"
-    //                       rowSpan="1"
-    //                       colSpan="1"
-    //                       style={{ width: "221.2px" }}
-    //                       aria-label="Employee Name: activate to sort column ascending"
-    //                     >
-    //                       status
-    //                     </th>
-    //                     <th
-    //                       className="sorting_desc top-headings"
-    //                       tabIndex="0"
-    //                       aria-controls="myProjectTable"
-    //                       rowSpan="1"
-    //                       colSpan="1"
-    //                       style={{ width: "221.2px" }}
-    //                       aria-label="Employee Name: activate to sort column ascending"
-    //                     >
-    //                       Action
-    //                     </th>
-    //                   </tr>
-    //                 </thead>
-    //                 {data &&
-    //                   data.map((d, i) => (
-    //                     <tbody key={i}>
-    //                       <tr role="row" className="odd">
-    //                         <td tabIndex="0" className="sorting_1">
-    //                           <span className="fw-bold ms-1">{d.id}</span>
-    //                         </td>
-    //                         <td>
-    //                           <span className="fw-bold ms-1">{d.name}</span>
-    //                         </td>
-    //                         <td>
-    //                           <span className="fw-bold ms-1">
-    //                             {d.description}
-    //                           </span>
-    //                         </td>
-    //                         <td>
-    //                           <span className="fw-bold ms-1">
-    //                             {d.start_date}
-    //                           </span>
-    //                         </td>
-    //                         <td>
-    //                           <span className="fw-bold ms-1">{d.end_date}</span>
-    //                         </td>
-
-    //                         {/* { clients.map((d, i) => ( */}
-    //                         <td>
-    //                           <span className="fw-bold ms-1">
-    //                           {fetchUserName(d?.client)}
-    //                           {/* {d?.client} */}
-    //                           </span>
-    //                         </td>
-    //                         {/* )} */}
-    //                         <td>
-    //                           <span className="back bg-success">
-    //                             {d.status}
-    //                           </span>
-    //                         </td>
-    //                         <td>
-    //                           <Link
-    //                             to={`/DetailsProject/${d.id}`}
-    //                             className="btn btn-danger"
-    //                           >
-    //                             View
-    //                           </Link>
-    //                         </td>
-    //                         <td className="dt-body-right">
-    //                           <button
-    //                             className="btn btn-primary"
-    //                             type="submit"
-    //                             onClick={() => deleteProject(d.id)}
-    //                             role="group"
-    //                             aria-label="basic outlined example"
-    //                           >
-    //                             Delete
-    //                           </button>
-    //                         </td>
-    //                         <td>
-    //                           <EditProject data={d} fetchData={fetchData} />
-    //                         </td>
-    //                       </tr>
-    //                     </tbody>
-    //                   ))}
-    //               </table>
-    //             </div>
-    //           </div>
-    //         </div>
-    //       </div>
-    //     </div>
-    //   </div>
-    // </>
     <>
       <Navigation />
       <div className="container-fluid">
@@ -376,9 +180,6 @@ const Projects = () => {
             <div className="col" style={{marginTop:"8%"}}>
               <div className="head-section border-0 mb-4">
                 <div className="row align-items-center">
-                  {/* <div className="col-md-6">
-                    <div className="card-header py-4 bg bg-transparent d-flex align-items-center px-0 justify-content-between border-bottom flex-wrap"></div>
-                  </div> */}
                   <div className="col">
                     <div className="col-auto d-flex flex-row-reverse w-sm-100 mt-2 mt-sm-0">
                       <AddProject fetchData={fetchData}
@@ -397,7 +198,6 @@ const Projects = () => {
                       columns={columns}
                       style={{
                         marginLeft: "-2%",
-                        // padding: "4% 4% 4% 4%",
                         backgroundColor: "#f3f3f3",
                         boxShadow: "0 0 2px 2px black",
                       }}
@@ -441,7 +241,7 @@ const Projects = () => {
                             />
                           ),
                           tooltip: "view",
-                          // onClick: (rowData)
+                          
                         }),
                         (rowData) => ({
                           icon: () => (
@@ -467,18 +267,11 @@ const Projects = () => {
                           ),
                         }),
                       ]}
-                      //  style={{
-                      //   maxWidth: "2200px",
-                      //   margin: "20px",
-                      //   marginRight: "100%",
-                      //   border: "8px",
-                      //   textAlign: "center",
-                      // }}
                       options={{
                         search: true,
                         sorting: true,
                         headerStyle: {
-                          background: "#cd0c62",
+                          background: "rgba(130, 130, 130, 0.8)",
                           color: "#fff",
                           fontSize: "100%",
                           fontWeight: "bold",

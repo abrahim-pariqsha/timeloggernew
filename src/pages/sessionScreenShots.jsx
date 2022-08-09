@@ -22,7 +22,7 @@ function SessionsScreenshots() {
       `https://timelogger.webstagdummy.com/timelogger/items/screenshot?filter[session.id]=` +
         id +
         "&fields=*.*",
-      // `http://timelogger.webstagdummy.com/timelogger/items/session?fields*.*`,
+    
       {
         method: "GET",
         headers: {
@@ -34,7 +34,7 @@ function SessionsScreenshots() {
     );
     setLoading(false);
     const data = await res.json();
-    console.log("sessionfff", data);
+    // console.log("sessionfff", data);
     setData(data.data)
   }, []);
 

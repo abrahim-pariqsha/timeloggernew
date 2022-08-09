@@ -34,7 +34,7 @@ function TaskDetails() {
     );
     setLoading(false);
     const data = await res.json();
-    console.log("dataaa", data);
+    // console.log("dataaa", data);
     setTask(data.data);
   };
 
@@ -95,7 +95,7 @@ function TaskDetails() {
                         search: true,
                         sorting: true,
                         headerStyle: {
-                          background: "#cd0c62",
+                          background: "rgba(130, 130, 130, 0.8)",
                           color: "#fff",
                           fontSize: "100%",
                           fontWeight: "bold",
@@ -111,32 +111,7 @@ function TaskDetails() {
         )}
       </div>
     </>
-    // <div className="">
-    //   <Link className="btn btn-primary" to="/Task">
-    //     Back
-    //   </Link>
-    //   <h1 className="display-4 ">User Id: {id}</h1>
-    //   <Table striped bordered hover variant="dark">
-    //     <thead>
-    //       <tr>
-    //         <th>Task Name</th>
-    //         <th>Description</th>
-    //         <th>Project Name</th>
-    //         <th>Employee</th>
-    //         <th>Status</th>
-    //       </tr>
-    //     </thead>
-    //     <tbody>
-    //       <tr>
-    //         <td>{task.name}</td>
-    //         <td>{task.description}</td>
-    //         <td>{task.project_name?.name}</td>
-    //         <td>{task.address}</td>
-    //         <td>{task.status}</td>
-    //       </tr>
-    //     </tbody>
-    //   </Table>
-    // </div>
+   
   );
 }
 

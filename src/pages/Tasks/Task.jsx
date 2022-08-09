@@ -45,7 +45,7 @@ function Client() {
   const fetchEmployee = useCallback(async () => {
     // setLoading(true)
     const res = await fetch(
-      // "http://timelogger.webstagdummy.com/timelogger/users?fields=*.*",
+ 
       "http://timelogger.webstagdummy.com/timelogger/items/employee?fields=*.*",
       {
         method: "GET",
@@ -102,7 +102,7 @@ function Client() {
   };
 
   const fetchEmployeeName = (employees) => {
-    console.log("emploo", employees);
+    // console.log("emploo", employees);
     const name = employee?.find((item, id) => item.id === employees);
     return name?.user?.first_name;
   };
@@ -148,9 +148,7 @@ function Client() {
             <div className="col" style={{marginTop:"8%"}}>
               <div className="head-section border-0 mb-4">
                 <div className="row align-items-center">
-                  {/* <div className="col-md-6">
-                  <div className="card-header py-4 bg bg-transparent d-flex align-items-center px-0 justify-content-between border-bottom flex-wrap"></div>
-                </div> */}
+             
                   <div className="col">
                     <div className="col-auto d-flex flex-row-reverse w-sm-100 mt-2 mt-sm-0">
                       <AddTask tokenProp={token} fetchData={fetchData} />
@@ -163,8 +161,7 @@ function Client() {
                 title="Task List"
                 columns={columns}
                 style={{
-                  // marginLeft: "-3%",
-                  // padding: "2% 2% 2% 2%",
+                 
                   backgroundColor: "#f3f3f3",
                   boxShadow: "0 0 2px 2px black",
                 }}
@@ -179,10 +176,6 @@ function Client() {
                     status,
                   }) => ({
                     id,
-
-                    // first_name:(user?.first_name),
-                    // email:(user?.email),
-                    // company:(user?.company),
                     assigned_employee: fetchEmployeeName(assigned_employee?.id),
                     description,
                     due_date: moment(due_date).format("YYYY-MM-DD"),
@@ -236,18 +229,12 @@ function Client() {
                     ),
                   }),
                 ]}
-                //  style={{
-                //   maxWidth: "2200px",
-                //   margin: "20px",
-                //   marginRight: "100%",
-                //   border: "8px",
-                //   textAlign: "center",
-                // }}
+             
                 options={{
                   search: true,
                   sorting: true,
                   headerStyle: {
-                    background: "#cd0c62",
+                    background: "rgba(130, 130, 130, 0.8)",
                     color: "#fff",
                     fontSize: "100%",
                     fontWeight: "bold",
@@ -260,208 +247,7 @@ function Client() {
         )}
       </div>
     </>
-    // <>
-    //   <Navigation />
-    //   <SideBar />
-    //   <div className="container-fluid">
-    //     <div className="row">
-    //       <div className="col-md-3"></div>
-    //       <div className="col-lg-9">
-    //         <div className="head-section border-0 mb-4">
-    //           <div className="row align-items-center">
-    //             <div className="col-md-6">
-    //               <div className="card-header py-4 no-bg bg-transparent d-flex align-items-center px-0 justify-content-between border-bottom flex-wrap">
-    //                 <h3 className="h4 mb-0">Task Management</h3>
-    //               </div>
-    //             </div>
-    //             <div className="col-md-6">
-    //               <div className="col-auto d-flex w-sm-100 mt-2 mt-sm-0">
-    // <AddTask tokenProp={token} fetchData={fetchData} />
-    //               </div>
-    //             </div>
-    //           </div>
-    //         </div>
-    //         <div className="row">
-    //           <div className="col-md-12">
-    //             <div className="side-body">
-    //               <table
-    //                 id="myProjectTable"
-    //                 className="table table-hover align-middle mb-0 nowwrap dataTable no-footer dtr-inline"
-    //                 style={{ width: "1005", alignItem: "center" }}
-    //                 role="grid"
-    //                 aria-describedby="myProjectTable_info"
-    //               >
-    //                 <thead>
-    //                   <tr role="row">
-    //                     <th
-    //                       className="sorting_desc top-headings"
-    //                       tabIndex="0"
-    //                       aria-controls="myProjectTable"
-    //                       rowSpan="1"
-    //                       colSpan="1"
-    //                       style={{ width: "221.2px" }}
-    //                       aria-label="client Name: activate to sort column ascending"
-    //                     >
-    //                       Task Id
-    //                     </th>
-
-    //                     <th
-    //                       className="sorting_desc top-headings"
-    //                       tabIndex="0"
-    //                       aria-controls="myProjectTable"
-    //                       rowSpan="1"
-    //                       colSpan="1"
-    //                       style={{ width: "221.2px" }}
-    //                       aria-label="client Name: activate to sort column ascending"
-    //                     >
-    //                       Name
-    //                     </th>
-
-    //                     <th
-    //                       className="sorting_desc top-headings"
-    //                       tabIndex="0"
-    //                       aria-controls="myProjectTable"
-    //                       rowSpan="1"
-    //                       colSpan="1"
-    //                       style={{ width: "221.2px" }}
-    //                       aria-label="client Name: activate to sort column ascending"
-    //                     >
-    //                       Description
-    //                     </th>
-    //                     <th
-    //                       className="sorting_desc top-headings"
-    //                       tabIndex="0"
-    //                       aria-controls="myProjectTable"
-    //                       rowSpan="1"
-    //                       colSpan="1"
-    //                       style={{ width: "221.2px" }}
-    //                       aria-label="client Name: activate to sort column ascending"
-    //                     >
-    //                       Due Date
-    //                     </th>
-    //                     <th
-    //                       className="sorting_desc top-headings"
-    //                       tabIndex="0"
-    //                       aria-controls="myProjectTable"
-    //                       rowSpan="1"
-    //                       colSpan="1"
-    //                       style={{ width: "221.2px" }}
-    //                       aria-label="client Name: activate to sort column ascending"
-    //                     >
-    //                       Project
-    //                     </th>
-
-    //                     <th
-    //                       className="sorting_desc top-headings"
-    //                       tabIndex="0"
-    //                       aria-controls="myProjectTable"
-    //                       rowSpan="1"
-    //                       colSpan="1"
-    //                       style={{ width: "221.2px" }}
-    //                       aria-label="client Name: activate to sort column ascending"
-    //                     >
-    //                       Employee
-    //                     </th>
-    //                     <th
-    //                       className="sorting_desc top-headings"
-    //                       tabIndex="0"
-    //                       aria-controls="myProjectTable"
-    //                       rowSpan="1"
-    //                       colSpan="1"
-    //                       style={{ width: "221.2px" }}
-    //                       aria-label="client Name: activate to sort column ascending"
-    //                     >
-    //                       Status
-    //                     </th>
-    //                     <th
-    //                       className="sorting_desc top-headings"
-    //                       tabIndex="0"
-    //                       aria-controls="myProjectTable"
-    //                       rowSpan="1"
-    //                       colSpan="1"
-    //                       style={{ width: "221.2px" }}
-    //                       aria-label="client Name: activate to sort column ascending"
-    //                     >
-    //                       Action
-    //                     </th>
-    //                   </tr>
-    //                 </thead>
-    //                 {data &&
-    //                   data?.map((d, i) => (
-    //                     <tbody key={i}>
-    //                       <tr role="row" className="odd">
-    //                         <td tabIndex="0" className="sorting_1">
-    //                           <span className="fw-bold ms-1">{d.id}</span>
-    //                         </td>
-    //                         <td tabIndex="0" className="sorting_1">
-    //                           <span className="fw-bold ms-1">{d.name} </span>
-    //                         </td>
-    //                         <td>
-    //                           <span className="fw-bold ms-1">
-    //                             {d.description}
-    //                           </span>
-    //                         </td>
-    //                         <td>
-    //                           <span className="fw-bold ms-1">
-    //                             {/* {d.due_date} */}
-    //                             {moment(d.due_date).format("DD-MM-YYYY")}
-    //                           </span>
-    //                         </td>
-    //                         <td>
-    //                           <span className="fw-bold ms-1">
-    //                             {d?.project?.name}
-    //                           </span>
-    //                         </td>
-    //                         <td>
-    //                           <span className="fw-bold ms-1">
-    //                             {fetchEmployeeName(d?.assigned_employee?.id)}
-    //                           </span>
-    //                         </td>
-
-    //                         <td>
-    //                           <span className="back bg-success">
-    //                             {d.status}
-    //                           </span>
-    //                         </td>
-    //                         <td>
-    //                           <Link
-    //                             to={`/TaskDetails/${d.id}`}
-    //                             className="btn btn-danger"
-    //                           >
-    //                             View
-    //                           </Link>
-    //                         </td>
-    //                         <td className="dt-body-right">
-    //                           <button
-    //                             className="btn btn-primary"
-    //                             type="submit"
-    //                             onClick={() => deleteTask(d.id)}
-    //                             role="group"
-    //                             aria-label="basic outlined example"
-    //                           >
-    //                             Delete
-    //                           </button>
-    //                         </td>
-    //                         <td>
-    // <EditTask
-    //   data={d}
-    //   handleUp={handleUp}
-    //   handleEdit={handleEdit}
-    //   edit={edit}
-    //   fetchData={fetchData}
-    // />
-    //                         </td>
-    //                       </tr>
-    //                     </tbody>
-    //                   ))}
-    //               </table>
-    //             </div>
-    //           </div>
-    //         </div>
-    //       </div>
-    //     </div>
-    //   </div>
-    // </>
+   
   );
 }
 export default Client;

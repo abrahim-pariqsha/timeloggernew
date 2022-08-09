@@ -34,11 +34,11 @@ function Login() {
         }
       });
     if (response) {
-      console.log(response.data.data.user)
+      // console.log(response.data.data.user)
       sessionStorage.setItem("user", JSON.stringify(response.data.data.user));
       sessionStorage.setItem("token", response.data.data.token);
       navigate("/");
-      console.log("reeeee", response);
+      // console.log("reeeee", response);
     }
     setLoading(false);
   };

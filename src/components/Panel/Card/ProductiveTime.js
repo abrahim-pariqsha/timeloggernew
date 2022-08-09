@@ -35,43 +35,25 @@ function ProductiveTime() {
 
       let start = moment.duration(data.table1?.[0]?.totaltime, "hh:mm:ss");
       let end = moment.duration(data.table2?.[0]?.idletime, "hh:mm:ss");
-      let Data = start - end; // in ms
+      let Data = start - end;
       setData(format_ms(Data));
     };
     fetchData();
   });
-
-  // console.log("kk", diff)
   return (
     <>
-   
-    <div>
       <div>
-        <div className="card-body" id="card2">
-          {/* <img src="https://media-exp1.licdn.com/dms/image/C560BAQH9Cnv1weU07g/company-logo_200_200/0/1575479070098?e=2147483647&v=beta&t=i4Pp6zVfz5VAznPIik_ua4I75sKlu4yAdGKgHC9vpTo" alt="BigCo Inc. logo"/> */}
-          <div>
-            <h1 className="text-success">Productive Time</h1>
+        <div>
+          <div className="card-body" id="card2">
+            <div>
+              <span className="text">Productive Time</span>
+            </div>
+            <span className="text-num">{Data}</span>
+            <img id="img" src="./img/members.png"></img>
           </div>
-          {/* <div className="donut">
-          <DonutChart
-        data={[
-          {
-            label: "Give you up",
-            value:Data?.table1?.[0]?.totaltime,
-          },
-          {
-            label: "hkjh",
-            value: (Data.table2?.[0]?.idletime),
-            isEmpty: true,
-          },
-        ]}
-      />
-      </div> */}
-          <h3 className="text-muted">{Data}</h3>
         </div>
       </div>
-    </div>
-</>
+    </>
   );
 }
 

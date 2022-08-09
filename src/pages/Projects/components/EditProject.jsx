@@ -41,7 +41,7 @@ function EditProject({ data: ProjectProp, fetchData }, handleEdit) {
         method: "PATCH",
       }
     );
-    console.log(project.client, "dsfsdf");
+    // console.log(project.client, "dsfsdf");
     fetchData();
     setShow(false);
     handleEdit();

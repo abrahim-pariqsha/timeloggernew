@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Modal } from "react-bootstrap";
 
-// eslint-disable-next-line react/prop-types
+
 function Edit({
   data,
   update,
@@ -11,18 +11,14 @@ function Edit({
   const token = sessionStorage.getItem("token");
   const [show, setShow] = useState(false);
   const [client, setClient] = useState(data);
-  // eslint-disable-next-line react/prop-types
-  // const [user, setUser] = useState({ ...userProp });
+
 
   //client
   const onClientChange = (e) => {
     setClient({ ...client, [e.target.name]: e.target.value });
   };
 
-  //user
-  // const onUserChange = (e) => {
-  //   setUser({ ...user, [e.target.name]: e.target.value });
-  // };
+ 
 
   //user
   const addClientUser = async (e) => {
@@ -37,10 +33,10 @@ function Edit({
         },
         body: JSON.stringify({
           first_name: client.first_name,
-          // last_name: client.last_name,
+     
           email: client.email,
           company: client.company,
-          // status: "active",
+       
         }),
         method: "PATCH",
       }

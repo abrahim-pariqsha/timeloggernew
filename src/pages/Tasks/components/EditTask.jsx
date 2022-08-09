@@ -3,12 +3,12 @@ import React, { useState, useEffect } from "react";
 import { Modal } from "react-bootstrap";
 import { useFetchProjects } from "../../../hooks/Project";
 import { useFetchEmployee } from "../../../hooks/Employees";
-// eslint-disable-next-line react/prop-types
+
 function EditTask({ data: taskProp, fetchData }, handleEdit) {
   const token = sessionStorage.getItem("token");
   const [show, setShow] = useState(false);
   const [task, setTask] = useState({ ...taskProp });
-  // eslint-disable-next-line react/prop-types
+
 
   const onClientChange = (e) => {
     setTask({ ...task, [e.target.name]: e.target.value });
@@ -48,7 +48,7 @@ function EditTask({ data: taskProp, fetchData }, handleEdit) {
     getEmployees();
     // console.log("akjsdhkajsd", getEmployees)
   }, []);
-  console.log(employees, "empppppp");
+  // console.log(employees, "empppppp");
   const { projects, getProjects } = useFetchProjects();
 
   useEffect(() => {
@@ -57,7 +57,7 @@ function EditTask({ data: taskProp, fetchData }, handleEdit) {
   if (!task) return <div></div>;
   const { name, description, employee, project, due_date, status } = task;
 
-  console.log("due", moment(due_date).format("YYYY-MM-DD hh:mm:ss"));
+  // console.log("due", moment(due_date).format("YYYY-MM-DD hh:mm:ss"));
 
   return (
     <div>
@@ -131,14 +131,7 @@ function EditTask({ data: taskProp, fetchData }, handleEdit) {
               </select>
             </>
 
-            {/* <input
-              className="form-control mb-4"
-              type="text"
-              name="employee"
-              value={employee?.id}
-              onChange={(e) => onClientChange(e)}
-              required
-            /> */}
+           
             <label>Status</label>
             <select
               className="form-control mb-4"
